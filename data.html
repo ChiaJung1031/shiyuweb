@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <title>矯正牙套/維持器/咬合板電子技工單</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      background: #b6f1fc;
+      font-family: "Noto Sans TC", "Microsoft JhengHei", Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    .order-form-container {
+      background: #d6f8ff;
+      max-width: 750px;
+      margin: 40px auto 32px auto;
+      padding: 36px 32px 28px 32px;
+      border-radius: 18px;
+      box-shadow: 0 6px 24px rgba(50,90,120,0.10);
+    }
+    h1 {
+      text-align: left;
+      font-size: 2.2rem;
+      font-weight: bold;
+      margin-bottom: 24px;
+      color: #1a3d51;
+      letter-spacing: 2px;
+    }
+    label {
+      font-weight: 500;
+      color: #224755;
+      margin-top: 18px;
+      display: block;
+      margin-bottom: 7px;
+      letter-spacing: 1px;
+    }
+    input[type="text"],
+    input[type="date"],
+    textarea {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1.5px solid #b4e1ef;
+      border-radius: 7px;
+      font-size: 1rem;
+      background: #eafbfd;
+      margin-bottom: 10px;
+      box-sizing: border-box;
+      transition: border 0.2s;
+      resize: none;
+    }
+    textarea {
+      min-height: 48px;
+    }
+    input[type="text"]:focus,
+    input[type="date"]:focus,
+    textarea:focus {
+      border: 1.5px solid #54b9e7;
+      outline: none;
+      background: #fff;
+    }
+    .radio-group,
+    .checkbox-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px 18px;
+      margin-bottom: 10px;
+      margin-top: 3px;
+    }
+    .radio-group label,
+    .checkbox-group label {
+      font-weight: 400;
+      color: #2a5e78;
+      letter-spacing: 0.5px;
+      margin-bottom: 0;
+      margin-right: 12px;
+    }
+    .radio-group input,
+    .checkbox-group input {
+      margin-right: 5px;
+      accent-color: #39a1e3;
+    }
+    .section {
+      margin-bottom: 18px;
+    }
+    .submit-btn {
+      width: 100%;
+      padding: 13px;
+      font-size: 1.1rem;
+      background: linear-gradient(90deg, #5cc5ef 30%, #498ae7 100%);
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      margin-top: 12px;
+      cursor: pointer;
+      box-shadow: 0 2px 10px rgba(60,170,240,0.10);
+      transition: background 0.2s;
+    }
+    .submit-btn:hover {
+      background: linear-gradient(90deg, #498ae7 30%, #5cc5ef 100%);
+    }
+    @media (max-width: 600px) {
+      .order-form-container {
+        max-width: 97vw;
+        padding: 16px 6px;
+      }
+      h1 {
+        font-size: 1.3rem;
+        margin-bottom: 18px;
+      }
+      label {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="order-form-container">
+    <h1>矯正牙套/維持器/咬合板電子技工單</h1>
+    <form>
+      <!-- 醫師資訊 -->
+      <div class="section">
+        <label for="doctor-name">醫師名字：</label>
+        <input type="text" id="doctor-name" name="doctor-name" required>
+        
+        <label for="clinic-name">診所名稱：</label>
+        <input type="text" id="clinic-name" name="clinic-name" required>
+      </div>
+      <!-- 項目 -->
+      <div class="section">
+        <label>項目：</label>
+        <div class="radio-group">
+          <label><input type="radio" name="item" value="矯正牙套" required>矯正牙套</label>
+          <label><input type="radio" name="item" value="維持器">維持器</label>
+          <label><input type="radio" name="item" value="咬合板">咬合板</label>
+        </div>
+      </div>
+      <!-- 矯正部位 -->
+      <div class="section">
+        <label>矯正部位：</label>
+        <div class="radio-group">
+          <label><input type="radio" name="part" value="全口" required>全口</label>
+          <label><input type="radio" name="part" value="上顎">上顎</label>
+          <label><input type="radio" name="part" value="下顎">下顎</label>
+        </div>
+      </div>
+      <!-- 選擇材料 -->
+      <div class="section">
+        <label>選擇材料：</label>
+        <div class="radio-group">
+          <label><input type="radio" name="material" value="三層材料" required>三層材料</label>
+          <label><input type="radio" name="material" value="4D材料">4D材料</label>
+          <label><input type="radio" name="material" value="PETG">PETG</label>
+          <label><input type="radio" name="material" value="TPU">TPU</label>
+          <label><input type="radio" name="material" value="自備材料">自備材料</label>
+        </div>
+      </div>
+      <!-- 材料厚度 -->
+      <div class="section">
+        <label>材料厚度：</label>
+        <div class="radio-group">
+          <label><input type="radio" name="thickness" value="0.5mm" required>0.5mm</label>
+          <label><input type="radio" name="thickness" value="0.65mm">0.65mm</label>
+          <label><input type="radio" name="thickness" value="0.75mm">0.75mm</label>
+          <label><input type="radio" name="thickness" value="0.8mm">0.8mm</label>
+          <label><input type="radio" name="thickness" value="1.0mm">1.0mm</label>
+          <label><input type="radio" name="thickness" value="1.5mm">1.5mm</label>
+          <label><input type="radio" name="thickness" value="2.0mm">2.0mm</label>
+        </div>
+      </div>
+      <!-- 製作項目 -->
+      <div class="section">
+        <label>製作項目：</label>
+        <div class="checkbox-group">
+          <label><input type="checkbox" name="make-item" value="鑲空">鑲空</label>
+          <label><input type="checkbox" name="make-item" value="虛擬牙">虛擬牙</label>
+          <label><input type="checkbox" name="make-item" value="拋光">拋光</label>
+          <label><input type="checkbox" name="make-item" value="補倒凹">補倒凹</label>
+          <label><input type="checkbox" name="make-item" value="剪cut">剪cut</label>
+          <label><input type="checkbox" name="make-item" value="車波浪">車波浪</label>
+          <label><input type="checkbox" name="make-item" value="牙齦上">牙齦上</label>
+          <label><input type="checkbox" name="make-item" value="牙齦下">牙齦下</label>
+          <label><input type="checkbox" name="make-item" value="其他">其他</label>
+        </div>
+      </div>
+      <!-- 預計出貨日期 -->
+      <div class="section">
+        <label for="ship-date">選擇預計出貨日期：</label>
+        <input type="date" id="ship-date" name="ship-date">
+      </div>
+      <!-- 特殊指示 -->
+      <div class="section">
+        <label for="note">特殊指示：</label>
+        <textarea id="note" name="note" placeholder="請輸入特殊需求，例如：特別剪裁、顏色要求等"></textarea>
+      </div>
+      <!-- 送出 -->
+      <button type="submit" class="submit-btn">送出表單</button>
+    </form>
+  </div>
+</body>
+</html>

@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>隱形牙套介紹</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .fade-in { opacity: 0; transform: translateY(20px); transition: all 0.8s ease-in-out; }
+    .fade-in.show { opacity: 1; transform: translateY(0); }
+    .zoom-hover { transition: transform 0.4s ease; }
+    .zoom-hover:hover { transform: scale(1.05); }
+    .flip-card { perspective: 1000px; height: 100%; }
+    .flip-card-inner {
+      position: relative; width: 100%; height: 100%;
+      transform-style: preserve-3d;
+      transition: transform 0.6s;
+    }
+    .flip-card:hover .flip-card-inner { transform: rotateY(180deg); }
+    .flip-card-front, .flip-card-back {
+      position: absolute; width: 100%; height: 100%;
+      top: 0; left: 0;
+      backface-visibility: hidden;
+      border-radius: 0.75rem;
+    }
+    .flip-card-back { transform: rotateY(180deg); }
+	
+	
+	
+	
+	.radial-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.radial-item {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform:
+    rotate(var(--deg))
+    translate(0, -180px)
+    rotate(calc(-1 * var(--deg)));
+}
+.circle {
+  width: 8rem;
+  height: 8rem;
+  background-color: rgba(59,130,246,0.9); /* blue-500 */
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: float 6s ease-in-out infinite;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  padding: 1rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+}
+.circle:hover {
+  transform: scale(1.1);
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-8px); }
+}
+
+
+  .fade-in { opacity: 0; transform: translateY(20px); transition: all 0.8s ease-in-out; }
+    .fade-in.show { opacity: 1; transform: translateY(0); }
+    .zoom-hover { transition: transform 0.4s ease; }
+    .zoom-hover:hover { transform: scale(1.05); }
+    .flip-card { perspective: 1000px; height: 100%; }
+    .flip-card-inner {
+      position: relative; width: 100%; height: 100%;
+      transform-style: preserve-3d;
+      transition: transform 0.6s;
+    }
+    .flip-card:hover .flip-card-inner { transform: rotateY(180deg); }
+    .flip-card-front, .flip-card-back {
+      position: absolute; width: 100%; height: 100%;
+      top: 0; left: 0;
+      backface-visibility: hidden;
+      border-radius: 0.75rem;
+    }
+    .flip-card-back { transform: rotateY(180deg); }
+    .radial-container {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+    .radial-item {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform:
+        rotate(var(--deg))
+        translate(0, -180px)
+        rotate(calc(-1 * var(--deg)));
+    }
+    .circle {
+      width: 8rem;
+      height: 8rem;
+      background-image: linear-gradient(to bottom right, #3b82f6, #60a5fa, #2563eb);
+      border-radius: 9999px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: float 6s ease-in-out infinite;
+      color: white;
+      font-weight: bold;
+      text-align: center;
+      padding: 1rem;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s;
+    }
+    .circle:hover { transform: scale(1.1); }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+  </style>
+</head>
+<body class="font-sans text-gray-800 overflow-x-hidden pt-20">
+  <!-- Header -->
+ <header class="fixed top-0 left-0 w-full bg-white shadow z-50">
+    <div class="max-w-6xl mx-auto flex justify-between items-center px-6 py-4">
+      <div class="text-2xl font-extrabold text-blue-600"><img src="C:\Users\user\Desktop\cc\123.png" class="h-12 w-auto"></div>
+      <nav>
+        <ul class="hidden md:flex space-x-6 text-gray-700">
+          <li><a href="#hero" class="hover:text-blue-500">隱形牙套</a></li>
+          <li><a href="#material-cards" class="hover:text-blue-500">材質優勢</a></li>
+          <li><a href="#features" class="hover:text-blue-500">特色</a></li>
+          <li><a href="#process" class="hover:text-blue-500">流程</a></li>
+          <li><a href="#qa" class="hover:text-blue-500">常見問題</a></li>
+          <li><a href="#contact" class="hover:text-blue-500">聯絡我們</a></li>
+        </ul>
+        <button id="nav-toggler" class="md:hidden focus:outline-none">
+          <svg class="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </nav>
+    </div>
+    <div id="mobile-menu" class="md:hidden hidden bg-white shadow-inner">
+      <ul class="px-6 py-4 space-y-3">
+        <li><a href="#hero" class="block text-gray-700 hover:text-blue-500">隱形牙套</a></li>
+        <li><a href="#material-cards" class="block text-gray-700 hover:text-blue-500">材質優勢</a></li>
+        <li><a href="#features" class="block text-gray-700 hover:text-blue-500">特色</a></li>
+        <li><a href="#process" class="block text-gray-700 hover:text-blue-500">流程</a></li>
+        <li><a href="#qa" class="block text-gray-700 hover:text-blue-500">常見問題</a></li>
+        <li><a href="#contact" class="block text-gray-700 hover:text-blue-500">聯絡我們</a></li>
+      </ul>
+    </div>
+  </header>
+  <main>
+    <!-- Hero -->
+    <section id="hero" class="relative overflow-hidden bg-gradient-to-r from-blue-100 via-white to-blue-200 px-6 py-20 text-center fade-in">
+      <div class="relative z-10">
+        <h1 class="text-5xl md:text-6xl font-extrabold text-blue-800 mb-6 drop-shadow-lg">你的微笑，值得更好的呵護</h1>
+        <p class="text-xl md:text-2xl text-gray-700 mb-8">量身打造的隱形牙套，舒適、透明、有效。</p>
+        <button class="bg-blue-500 text-white px-8 py-3 text-lg rounded-full font-semibold hover:bg-blue-600 transition-transform duration-300 hover:scale-105 shadow-lg">立即預約免費諮詢</button>
+        <img src="https://via.placeholder.com/800x400" alt="隱形牙套" class="mx-auto mt-12 rounded-xl shadow-2xl zoom-hover">
+      </div>
+    <div class="text-center text-sm text-gray-700 mt-4">
+  材質進化更升級<br>
+  UCLA 評為全球隱形矯正材料最高品質<br>
+  時代天使給您更舒適更精準的隱形矯正器
+</div>
+<div class="text-center mt-4">
+  <a href="#" class="inline-block bg-blue-500 text-white px-6 py-2 rounded-full hover:bg-blue-600 transition">立即前往 masterControl</a>
+</div>
+</section>
+
+
+  <section id="material-circles" class="py-16 px-6 bg-white/90">
+    <div class="max-w-6xl mx-auto text-center mb-12">
+      <h2 class="text-3xl font-bold text-blue-800">六大材質特性</h2>
+    </div>
+    <div class="relative w-[500px] h-[500px] mx-auto mb-12 flex items-center justify-center">
+      <img src="https://via.placeholder.com/240x120" alt="材質中心圖" class="absolute inset-0 m-auto w-60 h-auto z-10" />
+      <div class="absolute inset-0 radial-container">
+        <div class="radial-item" style="--deg:-90deg"><div class="circle">隱形性</div></div>
+        <div class="radial-item" style="--deg:-30deg"><div class="circle">高彈性</div></div>
+        <div class="radial-item" style="--deg:30deg"><div class="circle">抗染色性</div></div>
+        <div class="radial-item" style="--deg:90deg"><div class="circle">高抗撕裂性</div></div>
+        <div class="radial-item" style="--deg:150deg"><div class="circle">力學穩定性</div></div>
+        <div class="radial-item" style="--deg:210deg"><div class="circle">自動適應性</div></div>
+      </div>
+    </div>
+  </section>
+
+
+
+
+
+
+    <!-- 材質優勢（卡片翻面） -->
+    <section id="material-cards" class="py-16 px-6 bg-gray-100">
+ 
+      <div class="max-w-6xl mx-auto text-center mb-12">
+        <h2 class="text-4xl font-bold text-blue-800">茜寶 材質優勢</h2>
+        <p class="mt-2 text-gray-600">自適應性高分子醫用材料</p>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <!-- 卡片一 -->
+        <div class="flip-card h-64">
+          <div class="flip-card-inner bg-white shadow-lg h-full">
+            <div class="flip-card-front flex flex-col items-center justify-center p-6">
+              <img src="https://via.placeholder.com/64" alt="自動適應性" class="w-16 h-16 mb-4" />
+              <h3 class="text-xl font-semibold text-gray-800">自動適應性</h3>
+            </div>
+            <div class="flip-card-back bg-blue-500 flex flex-col items-center justify-center p-6 text-white">
+              <h3 class="text-lg font-bold mb-2">自動適應性</h3>
+              <p class="text-sm text-center">材質會根據口腔形狀微調，提供舒適而精準的貼合度。</p>
+            </div>
+          </div>
+        </div>
+        <!-- 其他卡片可依此樣式複製 -->
+      </div>
+    </section>
+
+    <!-- 特色 -->
+    <section id="features" class="py-16 px-6 bg-gradient-to-b from-white to-blue-50 fade-in">
+      <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-12 text-center">
+        <div class="bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition duration-300 border-t-4 border-blue-400 zoom-hover">
+          <img src="https://via.placeholder.com/64" alt="特色1" class="w-16 h-16 mx-auto mb-4">
+          <h4 class="text-blue-700 text-lg font-bold mb-1">幾乎隱形</h4>
+          <p class="text-sm text-gray-600">無鋼絲設計，佩戴自然無負擔。</p>
+        </div>
+        <!-- 其他項目... -->
+      </div>
+    </section>
+
+    <!-- 流程 -->
+    <section id="process" class="bg-gradient-to-br from-blue-50 via-white to-blue-100 py-16 px-6 fade-in">
+      <h2 class="text-4xl font-extrabold text-center mb-12 text-blue-800">只需四步，展現自信笑容</h2>
+      <div class="max-w-6xl mx-auto grid md:grid-cols-4 gap-8 text-center">
+        <div class="bg-white p-6 rounded-2xl shadow-xl border-t-4 border-blue-400">
+          <div class="text-blue-600 text-4xl font-extrabold mb-3">1</div>
+          <p class="font-semibold text-blue-800">線上預約</p>
+          <p class="text-sm text-gray-600">填寫基本資料，我們將主動聯繫您。</p>
+        </div>
+        <!-- 步驟2～4... -->
+      </div>
+    </section>
+
+    <!-- QA -->
+    <section id="qa" class="py-16 px-6 bg-white fade-in">
+      <h2 class="text-3xl font-extrabold text-center mb-8">還有什麼想知道嗎？讓我們來回答</h2>
+      <div class="max-w-3xl mx-auto space-y-4">
+        <div class="border rounded-lg overflow-hidden faq-item">
+          <button class="faq-question w-full px-4 py-3 flex justify-between items-center text-left">
+            <span>隱形牙套療程需要多久？</span><span class="faq-icon text-2xl">+</span>
+          </button>
+          <div class="faq-answer px-4 py-3 hidden text-gray-600">視個人情況，一般為 6~24 個月。</div>
+        </div>
+        <!-- 更多 QA ... -->
+      </div>
+    </section>
+
+    <!-- 聯絡我們 -->
+    <section id="contact" class="py-16 px-6 bg-blue-50 fade-in">
+      <h2 class="text-3xl font-extrabold text-center mb-6">聯絡我們</h2>
+      <form class="max-w-xl mx-auto bg-white p-6 rounded-lg shadow-md space-y-4">
+        <input type="text" placeholder="姓名" class="w-full border px-3 py-2 rounded">
+        <input type="email" placeholder="Email" class="w-full border px-3 py-2 rounded">
+        <textarea placeholder="您的需求" class="w-full border px-3 py-2 rounded h-32"></textarea>
+        <button type="submit" class="bg-blue-500 text-white px-6 py-2 rounded hover:bg-blue-600">送出</button>
+      </form>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-white text-center py-6 fade-in">
+    &copy; 2025 隱形牙套品牌｜All rights reserved.
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('show'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    document.querySelectorAll('.faq-question').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const ans = btn.nextElementSibling;
+        const ico = btn.querySelector('.faq-icon');
+        ans.classList.toggle('hidden');
+        ico.textContent = ans.classList.contains('hidden') ? '+' : '−';
+      });
+    });
+
+    document.getElementById('nav-toggler').addEventListener('click', () => {
+      document.getElementById('mobile-menu').classList.toggle('hidden');
+    });
+  </script>
+</body>
+</html>
