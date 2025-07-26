@@ -3,8 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>世宇醫材</title>
-   <link rel="icon" type="image/png" href="/shiyu_pic.png">
+  <title>隱形牙套介紹</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     .fade-in { opacity: 0; transform: translateY(20px); transition: all 0.8s ease-in-out; }
@@ -25,26 +24,150 @@
       border-radius: 0.75rem;
     }
     .flip-card-back { transform: rotateY(180deg); }
+	
+	
+	
+	
+	.radial-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.radial-item {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform:
+    rotate(var(--deg))
+    translate(0, -180px)
+    rotate(calc(-1 * var(--deg)));
+}
+.circle {
+  width: 8rem;
+  height: 8rem;
+  background-color: rgba(59,130,246,0.9); /* blue-500 */
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: float 6s ease-in-out infinite;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  padding: 1rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+}
+.circle:hover {
+  transform: scale(1.1);
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-8px); }
+}
+
+
+  .fade-in { opacity: 0; transform: translateY(20px); transition: all 0.8s ease-in-out; }
+    .fade-in.show { opacity: 1; transform: translateY(0); }
+    .zoom-hover { transition: transform 0.4s ease; }
+    .zoom-hover:hover { transform: scale(1.05); }
+    .flip-card { perspective: 1000px; height: 100%; }
+    .flip-card-inner {
+      position: relative; width: 100%; height: 100%;
+      transform-style: preserve-3d;
+      transition: transform 0.6s;
+    }
+    .flip-card:hover .flip-card-inner { transform: rotateY(180deg); }
+    .flip-card-front, .flip-card-back {
+      position: absolute; width: 100%; height: 100%;
+      top: 0; left: 0;
+      backface-visibility: hidden;
+      border-radius: 0.75rem;
+    }
+    .flip-card-back { transform: rotateY(180deg); }
+    .radial-container {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+    .radial-item {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform:
+        rotate(var(--deg))
+        translate(0, -180px)
+        rotate(calc(-1 * var(--deg)));
+    }
+    .circle {
+      width: 8rem;
+      height: 8rem;
+      background-image: linear-gradient(to bottom right, #3b82f6, #60a5fa, #2563eb);
+      border-radius: 9999px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: float 6s ease-in-out infinite;
+      color: white;
+      font-weight: bold;
+      text-align: center;
+      padding: 1rem;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s;
+    }
+    .circle:hover { transform: scale(1.1); }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+@keyframes fadeInUp {
+  0% { opacity: 0; transform: translateY(30px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in-up {
+  animation: fadeInUp 1s ease-out forwards;
+}
+
+
+.bg-gradient-radial {
+  background: radial-gradient(ellipse at center, var(--tw-gradient-stops));
+}
+
+
+
+@keyframes float {
+  0%, 100% { transform: translateY(0);}
+  50% { transform: translateY(-10px);}
+}
+@keyframes bounce-slow {
+  0%,100% { transform: translateY(0);}
+  60% { transform: translateY(-12px);}
+}
+@keyframes bounce-reverse {
+  0%,100% { transform: translateY(0);}
+  60% { transform: translateY(14px);}
+}
+.animate-float { animation: float 7s ease-in-out infinite;}
+.animate-bounce-slow { animation: bounce-slow 8s cubic-bezier(.52,.15,.51,1.23) infinite;}
+.animate-bounce-reverse { animation: bounce-reverse 6s cubic-bezier(.45,.32,.57,1.29) infinite;}
   </style>
 </head>
-<body class="font-sans text-[#123060] bg-gradient-to-br from-[#eaf4fc] to-[#e8f2f8] overflow-x-hidden pt-20">
+<body class="font-sans text-gray-800 overflow-x-hidden pt-20">
   <!-- Header -->
-  <header class="fixed top-0 left-0 w-full bg-white shadow z-50">
+ <header class="fixed top-0 left-0 w-full bg-white shadow z-50">
     <div class="max-w-6xl mx-auto flex justify-between items-center px-6 py-4">
-      <div class="text-2xl font-extrabold text-[#1B4C96]">
-        <img src="/shiyu_pic.png" class="h-12 w-auto">
-      </div>
+      <div class="text-2xl font-extrabold text-blue-600"><img src="images/cu.png" class="h-12 w-auto"></div>
       <nav>
-        <ul class="hidden md:flex space-x-6 text-[#1B4C96]">
-          <li><a href="#hero" class="hover:text-[#2494E4]">隱形牙套</a></li>
-          <li><a href="#material-cards" class="hover:text-[#2494E4]">材質優勢</a></li>
-          <li><a href="#features" class="hover:text-[#2494E4]">特色</a></li>
-          <li><a href="#process" class="hover:text-[#2494E4]">流程</a></li>
-          <li><a href="#qa" class="hover:text-[#2494E4]">常見問題</a></li>
-          <li><a href="#contact" class="hover:text-[#2494E4]">聯絡我們</a></li>
+        <ul class="hidden md:flex space-x-6 text-gray-700">
+          <li><a href="#hero" class="hover:text-blue-500">隱形牙套</a></li>
+          <li><a href="#material-cards" class="hover:text-blue-500">材質優勢</a></li>
+          <li><a href="#features" class="hover:text-blue-500">特色</a></li>
+          <li><a href="#process" class="hover:text-blue-500">流程</a></li>
+          <li><a href="#qa" class="hover:text-blue-500">常見問題</a></li>
+          <li><a href="#contact" class="hover:text-blue-500">聯絡我們</a></li>
         </ul>
         <button id="nav-toggler" class="md:hidden focus:outline-none">
-          <svg class="w-6 h-6 text-[#1B4C96]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg class="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
           </svg>
         </button>
@@ -52,274 +175,271 @@
     </div>
     <div id="mobile-menu" class="md:hidden hidden bg-white shadow-inner">
       <ul class="px-6 py-4 space-y-3">
-        <li><a href="#hero" class="block text-[#1B4C96] hover:text-[#2494E4]">隱形牙套</a></li>
-        <li><a href="#material-cards" class="block text-[#1B4C96] hover:text-[#2494E4]">材質優勢</a></li>
-        <li><a href="#features" class="block text-[#1B4C96] hover:text-[#2494E4]">特色</a></li>
-        <li><a href="#process" class="block text-[#1B4C96] hover:text-[#2494E4]">流程</a></li>
-        <li><a href="#qa" class="block text-[#1B4C96] hover:text-[#2494E4]">常見問題</a></li>
-        <li><a href="#contact" class="block text-[#1B4C96] hover:text-[#2494E4]">聯絡我們</a></li>
+        <li><a href="#hero" class="block text-gray-700 hover:text-blue-500">隱形牙套</a></li>
+        <li><a href="#material-cards" class="block text-gray-700 hover:text-blue-500">材質優勢</a></li>
+        <li><a href="#features" class="block text-gray-700 hover:text-blue-500">特色</a></li>
+        <li><a href="#process" class="block text-gray-700 hover:text-blue-500">流程</a></li>
+        <li><a href="#qa" class="block text-gray-700 hover:text-blue-500">常見問題</a></li>
+        <li><a href="#contact" class="block text-gray-700 hover:text-blue-500">聯絡我們</a></li>
       </ul>
     </div>
   </header>
-
   <main>
     <!-- Hero -->
-<section class="relative w-full min-h-[500px] overflow-hidden bg-gradient-to-br from-[#2159A7] to-[#2196E6]">
-  <div id="banner-slider" class="relative w-full h-[500px] mx-auto">
-    <!-- 輪播頁面 1 -->
-    <div class="slider-slide absolute inset-0 w-full h-full flex items-center justify-center transition-all duration-500" style="display:block;">
-      <!-- 背景圖 -->
-      <img src="/mnt/data/9154f215-237c-4a61-bec6-d5c72cdfb5dd.png"
-           alt="主打圖1" 
-           class="absolute inset-0 w-full h-full object-cover object-center z-0" />
-      <!-- 遮罩 -->
-      <div class="absolute inset-0 bg-gradient-to-br from-[#2159A7]/80 to-[#2196E6]/80 z-10"></div>
-      <!-- 中央內容 -->
-      <div class="relative z-20 flex flex-col items-center justify-center w-full">
-        <h2 class="text-4xl md:text-5xl font-extrabold mb-5 text-white drop-shadow text-center">打造自信笑容</h2>
-        <p class="text-xl mb-7 font-light text-white text-center">專業3D列印隱形牙套，安全、舒適、快速！</p>
-        <a href="#contact" class="inline-block px-8 py-3 bg-[#FFD600] text-[#1B4C96] font-bold rounded-xl shadow hover:scale-105 transition">立即預約諮詢</a>
-      </div>
+<section class="relative overflow-hidden bg-gradient-to-r from-blue-200 via-white to-indigo-100 py-12 px-4 md:px-8">
+  <!-- 多個活潑圓圈裝飾 -->
+  <div class="absolute -top-12 left-8 w-32 h-32 bg-blue-300/50 rounded-full blur-2xl animate-bounce-slow"></div>
+  <div class="absolute top-20 left-[40%] w-14 h-14 bg-indigo-300/60 rounded-full blur-xl animate-float"></div>
+  <div class="absolute bottom-8 left-1/3 w-24 h-24 bg-blue-100/60 rounded-full blur-xl animate-bounce-reverse"></div>
+  <div class="absolute bottom-0 right-8 w-36 h-36 bg-indigo-100/70 rounded-full blur-3xl animate-float"></div>
+
+  <div class="relative z-10 max-w-6xl mx-auto grid md:grid-cols-[1.2fr_1fr] items-center gap-3">
+    <!-- 文字區 -->
+    <div class="text-center md:text-left space-y-4">
+      <p class="text-blue-700 font-semibold">打造更自信的笑容</p>
+      <h1 class="text-4xl md:text-5xl font-extrabold text-blue-900 leading-tight">
+        隱形矯正的新選擇
+      </h1>
+      <p class="text-gray-700 text-base md:text-lg">
+        隱形舒適、專人監控、個性化療程。
+      </p>
+     
     </div>
-    <!-- 輪播頁面 2 -->
-    <div class="slider-slide absolute inset-0 w-full h-full flex items-center justify-center transition-all duration-500" style="display:none;">
-      <img src="/mnt/data/a3df62d2-12ee-4ffd-b070-4026f45ce7ff.png"
-           alt="主打圖2"
-           class="absolute inset-0 w-full h-full object-cover object-center z-0" />
-      <div class="absolute inset-0 bg-gradient-to-br from-[#1B4C96]/80 to-[#2494E4]/80 z-10"></div>
-      <div class="relative z-20 flex flex-col items-center justify-center w-full">
-        <h2 class="text-4xl md:text-5xl font-extrabold mb-5 text-white drop-shadow text-center">全台專業配合診所</h2>
-        <p class="text-xl mb-7 font-light text-white text-center">超過500家診所選擇世宇醫材，專業信賴。</p>
-        <a href="#contact" class="inline-block px-8 py-3 bg-[#FFD600] text-[#1B4C96] font-bold rounded-xl shadow hover:scale-105 transition">聯絡我們</a>
-      </div>
+    <!-- 人物區 -->
+      <!--   <div class="flex justify-center">
+      <img src="images/05-nobg.png" alt="人物照" class="w-60 md:w-72 rounded-full shadow-2xl drop-shadow-xl bg-white/90">
+    </div>-->
+<div class="flex justify-center items-center">
+  <div class="relative rounded-3xl overflow-hidden shadow-xl ring-2 ring-blue-50 bg-white/40 backdrop-blur-md"
+       style="width: 430px; height: 270px;">
+    <!-- 主圖 -->
+    <img src="images/N-501.jpg"
+         alt="牙套主圖"
+         class="w-full h-full object-cover rounded-3xl" />
+    <!-- 柔和藍色光暈 -->
+    <div class="absolute inset-0 rounded-3xl pointer-events-none"
+         style="box-shadow: 0 8px 60px 20px #dbeafe;">
+    </div>
+  
+  </div>
+</div>
+		
+  </div>
+</section>
+
+
+
+ <!-- 流程 -->
+<section id="process" class="bg-gradient-to-br from-blue-50 via-white to-blue-100 py-16 px-6 fade-in">
+  <h2 class="text-4xl font-extrabold text-center mb-12 text-blue-800">自信微笑，輕鬆實現</h2>
+  <div class="max-w-6xl mx-auto grid md:grid-cols-4 gap-8 text-center">
+    <div class="p-6 rounded-2xl shadow-xl border-t-4 border-blue-300 bg-gradient-to-br from-sky-100 via-white to-blue-100">
+      <div class="text-blue-600 text-4xl font-extrabold mb-3">1</div>
+      <p class="font-semibold text-blue-800">線上預約</p>
+      <p class="text-sm text-blue-700">填寫基本資料，我們將主動聯繫您。</p>
+    </div>
+    <div class="p-6 rounded-2xl shadow-xl border-t-4 border-blue-300 bg-gradient-to-br from-sky-100 via-white to-blue-100">
+      <div class="text-blue-600 text-4xl font-extrabold mb-3">2</div>
+      <p class="font-semibold text-blue-800">專業諮詢</p>
+      <p class="text-sm text-blue-700">醫師為您分析，規劃專屬療程。</p>
+    </div>
+    <div class="p-6 rounded-2xl shadow-xl border-t-4 border-blue-300 bg-gradient-to-br from-sky-100 via-white to-blue-100">
+      <div class="text-blue-600 text-4xl font-extrabold mb-3">3</div>
+      <p class="font-semibold text-blue-800">訂製牙套</p>
+      <p class="text-sm text-blue-700">高科技設備製作，精準又舒適。</p>
+    </div>
+    <div class="p-6 rounded-2xl shadow-xl border-t-4 border-blue-300 bg-gradient-to-br from-sky-100 via-white to-blue-100">
+      <div class="text-blue-600 text-4xl font-extrabold mb-3">4</div>
+      <p class="font-semibold text-blue-800">自信微笑</p>
+      <p class="text-sm text-blue-700">定期回診，隨時追蹤，輕鬆完成。</p>
     </div>
   </div>
-  <!-- 左右箭頭 -->
-  <button id="slider-prev" class="absolute left-4 top-1/2 -translate-y-1/2 bg-[#1B4C96] bg-opacity-60 hover:bg-opacity-90 text-white rounded-full p-3 shadow-lg z-20 transition-all"><svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path d="M15 19l-7-7 7-7"/></svg></button>
-  <button id="slider-next" class="absolute right-4 top-1/2 -translate-y-1/2 bg-[#1B4C96] bg-opacity-60 hover:bg-opacity-90 text-white rounded-full p-3 shadow-lg z-20 transition-all"><svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button>
-  <!-- 小圓點指示 -->
-  <div id="slider-dots" class="absolute left-1/2 -translate-x-1/2 bottom-8 flex gap-2 z-20"></div>
 </section>
 
 
 
 
-    <section class="relative py-16 bg-gradient-to-b from-[#eaf4fc] to-[#f7fafc] overflow-hidden">
-      <div class="absolute left-0 top-0 w-96 h-96 bg-[#77B1EA] opacity-30 rounded-full -translate-x-1/2 -translate-y-1/2"></div>
-      <div class="absolute right-0 bottom-0 w-[400px] h-[400px] bg-[#2494E4] opacity-20 rounded-full translate-x-1/3 translate-y-1/3"></div>
-      <div class="absolute left-0 bottom-0 w-72 h-72 bg-[#1B4C96] opacity-10 rounded-full -translate-x-1/2 translate-y-1/2"></div>
-      <div class="relative w-fit mx-auto flex flex-col lg:flex-row items-center lg:items-start gap-8 z-10">
-        <!-- 文字區 -->
-        <div class="min-w-[320px] max-w-xl">
-          <h2 class="text-3xl md:text-4xl font-extrabold mb-4 border-l-4 border-[#2494E4] pl-4 text-[#1B4C96]">關於世宇醫材</h2>
-          <div class="text-lg text-[#2494E4] mb-2">專注於3D列印牙科數位化解決方案</div>
-          <div class="text-[#345c8a] mb-4">
-            世宇醫材致力於提供最先進的3D列印牙科解決方案，我們結合創新技術與專業經驗，為醫療機構提供高品質的客製化牙齒服務。<br><br>
-            我們的使命是透過精密的3D列印技術與控管的線上平台，協助牙科診所為患者提供更好的治療體驗，並持續推動牙科醫療技術的創新發展。
-          </div>
-          <!-- 指標小卡 -->
-          <div class="flex gap-4 mt-8">
-            <div class="bg-white rounded-xl shadow p-6 text-center min-w-[100px] border-t-4 border-[#2494E4]">
-              <div class="text-2xl font-extrabold text-[#1B4C96] mb-2">10+</div>
-              <div class="text-gray-500 text-sm">年行業經驗</div>
-            </div>
-            <div class="bg-white rounded-xl shadow p-6 text-center min-w-[100px] border-t-4 border-[#2494E4]">
-              <div class="text-2xl font-extrabold text-[#1B4C96] mb-2">500+</div>
-              <div class="text-gray-500 text-sm">合作診所</div>
-            </div>
-            <div class="bg-white rounded-xl shadow p-6 text-center min-w-[100px] border-t-4 border-[#2494E4]">
-              <div class="text-2xl font-extrabold text-[#1B4C96] mb-2">99%</div>
-              <div class="text-gray-500 text-sm">客戶滿意度</div>
-            </div>
-          </div>
-        </div>
-        <!-- 圖片區 -->
-        <div class="flex items-center justify-center relative lg:-translate-x-08 mt-12 transition-transform duration-300">
-      <div class="bg-blue-100 rounded-xl shadow-lg p-4 md:p-6">
-        <img src="images/apun.jpg" alt="世宇醫材icon" class="w-[300px] max-w-full rounded-md" />
+
+<!--
+  <section id="material-circles" class="py-16 px-6 bg-white/90">
+    <div class="max-w-6xl mx-auto text-center mb-12">
+      <h2 class="text-3xl font-bold text-blue-800">六大材質特性</h2>
+    </div>
+    <div class="relative w-[500px] h-[500px] mx-auto mb-12 flex items-center justify-center">
+      <img src="https://via.placeholder.com/240x120" alt="材質中心圖" class="absolute inset-0 m-auto w-60 h-auto z-10" />
+      <div class="absolute inset-0 radial-container">
+        <div class="radial-item" style="--deg:-90deg"><div class="circle">隱形性</div></div>
+        <div class="radial-item" style="--deg:-30deg"><div class="circle">高彈性</div></div>
+        <div class="radial-item" style="--deg:30deg"><div class="circle">抗染色性</div></div>
+        <div class="radial-item" style="--deg:90deg"><div class="circle">高抗撕裂性</div></div>
+        <div class="radial-item" style="--deg:150deg"><div class="circle">力學穩定性</div></div>
+        <div class="radial-item" style="--deg:210deg"><div class="circle">自動適應性</div></div>
       </div>
     </div>
-      </div>
-    </section>
+  </section>-->
 
-    <!-- 特色 -->
-    <section id="features" class="py-16 px-6 bg-gradient-to-b from-white to-[#eaf4fc] fade-in">
-      <div class="max-w-6xl mx-auto text-center mb-12">
-        <h2 class="text-4xl font-bold text-[#1B4C96]">服務項目</h2>
-      </div>
-      <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-12 text-center">
-        <!-- 項目1 -->
-        <div class="bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition duration-300 border-t-4 border-[#2494E4] zoom-hover">
-          <img src="/mnt/data/2dda9463-ca7b-497b-8872-eae7c1292a09.png" alt="特色1" class="w-20 h-20 mx-auto mb-4">
-          <h4 class="text-[#1B4C96] text-lg font-bold mb-1">幾乎隱形</h4>
-          <p class="text-sm text-[#345c8a]">無鋼絲設計，佩戴自然無負擔。</p>
-        </div>
-        <!-- 項目2 -->
-        <div class="bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition duration-300 border-t-4 border-[#2494E4] zoom-hover">
-          <img src="/mnt/data/2dda9463-ca7b-497b-8872-eae7c1292a09.png" alt="特色2" class="w-20 h-20 mx-auto mb-4">
-          <h4 class="text-[#1B4C96] text-lg font-bold mb-1">舒適服貼</h4>
-          <p class="text-sm text-[#345c8a]">採用醫療級高分子材質，安全穩定。</p>
-        </div>  
-        <!-- 項目3 -->
-        <div class="bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition duration-300 border-t-4 border-[#2494E4] zoom-hover">
-          <img src="/mnt/data/2dda9463-ca7b-497b-8872-eae7c1292a09.png" alt="特色3" class="w-20 h-20 mx-auto mb-4">
-          <h4 class="text-[#1B4C96] text-lg font-bold mb-1">拆卸便利</h4>
-          <p class="text-sm text-[#345c8a]">可隨時自行拆卸，飲食清潔皆方便。</p>
-        </div>
-      </div>
-    </section>
+
+
+
+
 
     <!-- 材質優勢（卡片翻面） -->
-   <section id="material-cards" class="relative py-24 px-6 bg-gradient-to-br from-[#f0f7fd] to-[#eaf4fc] overflow-hidden">
-  <!-- 右上大淡logo做為品牌背景 -->
-  <img src="/mnt/data/a3df62d2-12ee-4ffd-b070-4026f45ce7ff.png" class="absolute top-0 right-0 w-[400px] opacity-10 pointer-events-none z-0 select-none" alt="背景logo裝飾">
-  <!-- 左下圓弧漸層裝飾 -->
-  <div class="absolute left-0 bottom-0 w-[300px] h-[300px] bg-gradient-to-tr from-[#77b1ea] to-[#eaf4fc] opacity-40 rounded-full -translate-x-1/3 translate-y-1/3 z-0"></div>
-  
-  <div class="relative z-10 max-w-6xl mx-auto">
-    <div class="text-center mb-14">
-      <h2 class="text-4xl font-bold text-[#1B4C96] tracking-wide">茜寶 材質優勢</h2>
-      <p class="mt-2 text-[#2494E4] text-lg">自適應性高分子醫用材料</p>
+ <section id="material-cards" class="py-16 px-6 bg-gray-100">
+  <div class="max-w-6xl mx-auto text-center mb-12">
+    <h2 class="text-4xl font-bold text-blue-800">Cee Yu 材質優勢</h2>
+    <p class="mt-2 text-gray-600">自適應性高分子醫用材料</p>
+  </div>
+  <div class="flex justify-center">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- flip-card 1 -->
+      <div class="flip-card h-64 w-64">
+        <div class="flip-card-inner h-full">
+          <div class="flip-card-front flex flex-col items-center justify-center h-full w-full p-0">
+            <img src="images/11.png" alt="自動適應性"
+              class="absolute inset-0 h-full w-full object-cover rounded-xl" />
+            <div class="relative z-10 flex flex-col items-center justify-center h-full w-full bg-black/20">
+              <h3 class="text-xl font-semibold text-white drop-shadow">自動適應性</h3>
+            </div>
+          </div>
+          <div class="flip-card-back bg-blue-500 flex flex-col items-center justify-center h-full w-full p-6 text-white rounded-xl">
+            <h3 class="text-lg font-bold mb-2">自動適應性</h3>
+            <p class="text-sm text-center">材質會根據口腔形狀微調，提供舒適而精準的貼合度。</p>
+          </div>
+        </div>
+      </div>
+      <!-- flip-card 2 -->
+      <div class="flip-card h-64 w-64">
+        <div class="flip-card-inner h-full">
+          <div class="flip-card-front flex flex-col items-center justify-center h-full w-full p-0">
+            <img src="images/N-320.jpg" alt="自動適應性"
+              class="absolute inset-0 h-full w-full object-cover rounded-xl" />
+            <div class="relative z-10 flex flex-col items-center justify-center h-full w-full bg-black/20">
+              <h3 class="text-xl font-semibold text-white drop-shadow">自動適應性</h3>
+            </div>
+          </div>
+          <div class="flip-card-back bg-blue-500 flex flex-col items-center justify-center h-full w-full p-6 text-white rounded-xl">
+            <h3 class="text-lg font-bold mb-2">自動適應性</h3>
+            <p class="text-sm text-center">材質會根據口腔形狀微調，提供舒適而精準的貼合度。</p>
+          </div>
+        </div>
+      </div>
+      <!-- flip-card 3 -->
+      <div class="flip-card h-64 w-64">
+        <div class="flip-card-inner h-full">
+          <div class="flip-card-front flex flex-col items-center justify-center h-full w-full p-0">
+            <img src="images/N-530.jpg" alt="自動適應性"
+              class="absolute inset-0 h-full w-full object-cover rounded-xl" />
+            <div class="relative z-10 flex flex-col items-center justify-center h-full w-full bg-black/20">
+              <h3 class="text-xl font-semibold text-white drop-shadow">自動適應性</h3>
+            </div>
+          </div>
+          <div class="flip-card-back bg-blue-500 flex flex-col items-center justify-center h-full w-full p-6 text-white rounded-xl">
+            <h3 class="text-lg font-bold mb-2">自動適應性</h3>
+            <p class="text-sm text-center">材質會根據口腔形狀微調，提供舒適而精準的貼合度。</p>
+          </div>
+        </div>
+      </div>
     </div>
-    <!-- 卡片3欄 -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-      <!-- 卡片1 -->
-      <div class="bg-white/95 rounded-2xl shadow-xl p-8 text-center border-t-4 border-[#2494E4] hover:scale-105 transition-all duration-300">
-        <img src="/mnt/data/a3df62d2-12ee-4ffd-b070-4026f45ce7ff.png" class="w-16 h-16 mx-auto mb-3 rounded-full bg-[#eaf4fc] shadow" alt="自動適應性">
-        <h3 class="text-xl font-bold text-[#1B4C96] mb-2">自動適應性</h3>
-        <p class="text-[#345c8a] text-sm">材質會根據口腔形狀微調，舒適且精準貼合。</p>
+  </div>
+</section>
+
+<section class="py-16 bg-gradient-to-b from-blue-50 via-white to-blue-100">
+  <div class="max-w-6xl mx-auto">
+    <h2 class="text-4xl font-bold text-center text-blue-800 mb-10">真實見證．放心選擇</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+      <!-- 卡片 1：白底帶陰影 -->
+      <div class="flex flex-col items-center">
+        <img src="images/N-236.jpg" class="w-72 h-72 object-cover rounded-2xl shadow-lg mb-6" alt="見證1">
+        <div class="bg-white rounded-2xl p-6 text-gray-800 w-full text-center font-medium shadow-lg shadow-blue-100">
+          <div class="font-bold text-xl mb-2">Sean</div>
+          <div class="text-base leading-relaxed">
+            一直興起想整牙的念頭，但礙於工作需要大量報告，怕戴鋼牙吃東西不舒服、價格又比較貴，遲遲不敢起心動念，後來接觸到 Cee Yu，牙套是透明的完全符合我的需求。
+          </div>
+        </div>
       </div>
-      <!-- 卡片2 -->
-      <div class="bg-white/95 rounded-2xl shadow-xl p-8 text-center border-t-4 border-[#2494E4] hover:scale-105 transition-all duration-300">
-        <img src="/mnt/data/a3df62d2-12ee-4ffd-b070-4026f45ce7ff.png" class="w-16 h-16 mx-auto mb-3 rounded-full bg-[#eaf4fc] shadow" alt="高彈力">
-        <h3 class="text-xl font-bold text-[#1B4C96] mb-2">高彈力材質</h3>
-        <p class="text-[#345c8a] text-sm">高分子彈力，能持續穩定推動牙齒。</p>
+      <!-- 卡片 2：淡灰綠 -->
+      <div class="flex flex-col items-center">
+        <img src="images/N-36.jpg" class="w-72 h-72 object-cover rounded-2xl shadow-lg mb-6" alt="見證2">
+        <div class="bg-emerald-50 rounded-2xl p-6 text-gray-800 w-full text-center font-medium shadow-md">
+          <div class="font-bold text-xl mb-2">芷妍</div>
+          <div class="text-base leading-relaxed">
+            戴 Cee Yu 的隱形牙套到現在第二個月，完全沒有後悔。雖然每換一副新牙套時會有些微不舒服，也還在嘗試和疼軟感受共處中，但還是很期待接下來牙齒的變化！
+          </div>
+        </div>
       </div>
-      <!-- 卡片3 -->
-      <div class="bg-white/95 rounded-2xl shadow-xl p-8 text-center border-t-4 border-[#2494E4] hover:scale-105 transition-all duration-300">
-        <img src="/mnt/data/a3df62d2-12ee-4ffd-b070-4026f45ce7ff.png" class="w-16 h-16 mx-auto mb-3 rounded-full bg-[#eaf4fc] shadow" alt="醫用等級">
-        <h3 class="text-xl font-bold text-[#1B4C96] mb-2">醫用等級</h3>
-        <p class="text-[#345c8a] text-sm">通過多項安全檢測，確保患者安心使用。</p>
+      <!-- 卡片 3：柔霧灰紫 -->
+      <div class="flex flex-col items-center">
+        <img src="images/apun.jpg" class="w-72 h-72 object-cover rounded-2xl shadow-lg mb-6" alt="見證3">
+        <div class="bg-indigo-50 rounded-2xl p-6 text-gray-800 w-full text-center font-medium shadow-md">
+          <div class="font-bold text-xl mb-2">柯胖</div>
+          <div class="text-base leading-relaxed">
+            Cee Yu 一開始先線上評估，只要 5 分鐘就可以完成，在專業醫生評估適切性後約診，可以完全省去跑診所後發現不合適的時間成本。
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
 
-    <!-- 流程 -->
-    <section id="process" class="bg-gradient-to-br from-[#eaf4fc] via-white to-[#2494E4] py-16 px-6 fade-in">
-      <h2 class="text-4xl font-extrabold text-center mb-12 text-[#1B4C96]">只需四步，展現自信笑容</h2>
-      <div class="max-w-6xl mx-auto grid md:grid-cols-4 gap-8 text-center">
-        <div class="bg-white p-6 rounded-2xl shadow-xl border-t-4 border-[#2494E4]">
-          <div class="text-[#2494E4] text-4xl font-extrabold mb-3">1</div>
-          <p class="font-semibold text-[#1B4C96]">線上預約</p>
-          <p class="text-sm text-[#345c8a]">填寫基本資料，我們將主動聯繫您。</p>
-        </div>
-        <!-- 步驟2～4... -->
-      </div>
-    </section>
+
+
 
     <!-- QA -->
     <section id="qa" class="py-16 px-6 bg-white fade-in">
-      <h2 class="text-3xl font-extrabold text-center mb-8 text-[#1B4C96]">還有什麼想知道嗎？讓我們來回答</h2>
+      <h2 class="text-3xl font-extrabold text-center mb-8">還有什麼想知道嗎？讓我們來回答</h2>
       <div class="max-w-3xl mx-auto space-y-4">
         <div class="border rounded-lg overflow-hidden faq-item">
           <button class="faq-question w-full px-4 py-3 flex justify-between items-center text-left">
             <span>隱形牙套療程需要多久？</span><span class="faq-icon text-2xl">+</span>
           </button>
-          <div class="faq-answer px-4 py-3 hidden text-[#345c8a]">視個人情況，一般為 6~24 個月。</div>
+          <div class="faq-answer px-4 py-3 hidden text-gray-600">視個人情況，一般為 6~24 個月。</div>
         </div>
         <!-- 更多 QA ... -->
       </div>
     </section>
+
+   
   </main>
 
-  
   <!-- Footer -->
-  <footer class="bg-[#1B4C96] text-white px-6 pt-10 pb-6">
-    <div class="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
-      <!-- 公司資訊 -->
-      <div>
-        <div class="flex items-center mb-4">
-          <img src="D:\tooth\shiyu_pic.png" class="h-12 w-auto mr-2">
-          <span class="text-xl font-bold tracking-wide">世宇醫材</span>
-        </div>
-        <div class="text-sm text-blue-100 mb-4">
-          專業牙科數位化解決方案，為您提供最可靠的<br>
-          牙科服務與技術支援
-        </div>
-        <div class="flex space-x-4 mt-2">
-          <a href="#" aria-label="Facebook" class="hover:text-[#77B1EA]">
-            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M22.676 0h-21.352c-.731 0-1.324.593-1.324 1.324v21.352c0 .73.593 1.324 1.324 1.324h11.494v-9.294h-3.125v-3.622h3.125v-2.672c0-3.097 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.797.142v3.24h-1.918c-1.505 0-1.797.715-1.797 1.763v2.315h3.587l-.467 3.622h-3.12v9.294h6.116c.73 0 1.324-.594 1.324-1.324v-21.352c0-.731-.594-1.324-1.324-1.324z"/></svg>
-          </a>
-          <a href="#" aria-label="Instagram" class="hover:text-[#77B1EA]">
-            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12,2.163c3.204,0,3.584,0.012,4.85,0.07c1.366,0.062,2.633,0.354,3.608,1.329c0.975,0.975,1.267,2.243,1.329,3.608 c0.058,1.267,0.07,1.646,0.07,4.85s-0.012,3.584-0.07,4.85c-0.062,1.366-0.354,2.633-1.329,3.608c-0.975,0.975-2.243,1.267-3.608,1.329 c-1.267,0.058-1.646,0.07-4.85,0.07s-3.584-0.012-4.85-0.07c-1.366-0.062-2.633-0.354-3.608-1.329c-0.975-0.975-1.267-2.243-1.329-3.608 c-0.058-1.267-0.07-1.646-0.07-4.85s0.012-3.584,0.07-4.85c0.062-1.366,0.354-2.633,1.329-3.608c0.975-0.975,2.243-1.267,3.608-1.329 C8.416,2.175,8.796,2.163,12,2.163 M12,0C8.741,0,8.333,0.015,7.053,0.072c-1.662,0.077-2.803,0.36-3.794,0.77 c-1.032,0.425-1.904,1.012-2.773,1.88c-0.868,0.869-1.455,1.741-1.88,2.773C0.432,5.249,0.149,6.39,0.072,8.053 C0.015,9.333,0,9.741,0,12s0.015,2.667,0.072,3.947c0.077,1.662,0.36,2.803,0.77,3.794c0.425,1.032,1.012,1.904,1.88,2.773 c0.869,0.868,1.741,1.455,2.773,1.88c0.991,0.41,2.132,0.693,3.794,0.77C8.333,23.985,8.741,24,12,24s3.667-0.015,4.947-0.072 c1.662-0.077,2.803-0.36,3.794-0.77c1.032-0.425,1.904-1.012,2.773-1.88c0.868-0.869,1.455-1.741,1.88-2.773 c0.41-0.991,0.693-2.132,0.77-3.794C23.985,15.667,24,15.259,24,12s-0.015-2.667-0.072-3.947c-0.077-1.662-0.36-2.803-0.77-3.794 c-0.425-1.032-1.012-1.904-1.88-2.773c-0.869-0.868-1.741-1.455-2.773-1.88C18.749,0.432,17.608,0.149,15.947,0.072 C14.667,0.015,14.259,0,12,0L12,0z"/><path d="M12,5.838A6.162,6.162,0,1,0,18.162,12,6.155,6.155,0,0,0,12,5.838Zm0,10.162A4,4,0,1,1,16,12,4,4,0,0,1,12,16Z"/><circle cx="18.406" cy="5.594" r="1.44"/></svg>
-          </a>
-        </div>
-      </div>
-      <!-- 快速連結 -->
-      <div>
-        <h3 class="font-semibold text-lg mb-3 flex items-center">
-          <svg class="w-5 h-5 mr-2 text-[#77B1EA]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M13.828 14.828a4 4 0 0 1 0-5.656m2.829 2.828a8 8 0 1 0-2.828 2.828" /></svg>
-          快速連結
-        </h3>
-        <ul class="space-y-2 text-blue-100">
-          <li><a href="#" class="hover:text-white">關於我們</a></li>
-          <li><a href="#" class="hover:text-white">服務項目</a></li>
-          <li><a href="#" class="hover:text-white">特色優勢</a></li>
-          <li><a href="#" class="hover:text-white">聯絡我們</a></li>
-        </ul>
-      </div>
-      <!-- 聯絡資訊 -->
-      <div>
-        <h3 class="font-semibold text-lg mb-3 flex items-center">
-          <svg class="w-5 h-5 mr-2 text-[#77B1EA]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 12a10 10 0 1 1-20 0 10 10 0 0 1 20 0Z"/><path d="M12 16v-4" /><path d="M12 8h.01" /></svg>
-          聯絡資訊
-        </h3>
-        <ul class="text-blue-100 space-y-2">
-          <li>02-26488267</li>
-          <li>shiyumed@gmail.com</li>
-          <li>新北市</li>
-        </ul>
-      </div>
-      <!-- 營業時間 -->
-      <div>
-        <h3 class="font-semibold text-lg mb-3 flex items-center">
-          <svg class="w-5 h-5 mr-2 text-[#77B1EA]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 6v6l4 2" /><circle cx="12" cy="12" r="10" /></svg>
-          營業時間
-        </h3>
-        <ul class="text-blue-100 space-y-1">
-          <li>週一至週五：09:00 - 18:00</li>
-          <li>週六、日：休息</li>
-        </ul>
-      </div>
+<footer class="bg-gray-800 text-white pt-10 pb-6 fade-in">
+  <div class="max-w-5xl mx-auto px-4 flex flex-col md:flex-row md:justify-between md:items-center gap-6">
+    <!-- 左側 LOGO/品牌名稱 -->
+    <div class="mb-2 md:mb-0 text-center md:text-left">
+      <div class="font-extrabold text-xl tracking-wider">Cee Yu 隱形牙套</div>
+      <div class="text-sm text-gray-400 mt-1">專業舒適・看不見的自信微笑</div>
     </div>
-    <div class="text-center text-blue-200 text-sm mt-10">&copy; 2025 世宇醫材｜All rights reserved.</div>
-  </footer>
+    <!-- 右側 聯絡資訊 -->
+    <div class="flex flex-col gap-2 text-sm text-center md:text-right">
+      <div><span class="font-semibold">電話：</span><a href="tel:02-1234-5678" class="hover:underline">02-1234-5678</a></div>
+      <div><span class="font-semibold">Email：</span><a href="mailto:info@ceeyu.com" class="hover:underline">info@ceeyu.com</a></div>
+      <div><span class="font-semibold">地址：</span>台北市信義區市民大道五段100號10F</div>
+    </div>
+  </div>
+  <div class="mt-6 text-center text-xs text-gray-400 border-t border-gray-700 pt-4">
+    &copy; 2025 Cee Yu 隱形牙套｜All rights reserved.<br>
+    <span class="hidden sm:inline">本網站資訊僅供參考，詳細療程請諮詢專業醫師。</span>
+  </div>
+</footer>
+  <script>
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('show'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
+    document.querySelectorAll('.faq-question').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const ans = btn.nextElementSibling;
+        const ico = btn.querySelector('.faq-icon');
+        ans.classList.toggle('hidden');
+        ico.textContent = ans.classList.contains('hidden') ? '+' : '−';
+      });
+    });
 
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  const slides = Array.from(document.querySelectorAll('.slider-slide'));
-  const dots = document.getElementById('slider-dots');
-  let cur = 0, timer;
-  function showSlide(i) {
-    slides.forEach((s, idx) => s.style.display = idx === i ? 'flex' : 'none');
-    Array.from(dots.children).forEach((d, idx) => d.className = idx === i ? 'w-3 h-3 rounded-full bg-[#FFD600]' : 'w-3 h-3 rounded-full bg-white bg-opacity-40');
-    cur = i;
-    clearTimeout(timer);
-    timer = setTimeout(()=>go(cur+1), 5000);
-  }
-  function go(i) { showSlide((i+slides.length)%slides.length); }
-  // dots
-  slides.forEach((_,i)=>{
-    let d=document.createElement('div');
-    d.className = 'w-3 h-3 rounded-full bg-white bg-opacity-40 cursor-pointer';
-    d.onclick=()=>showSlide(i);
-    dots.appendChild(d);
-  });
-  document.getElementById('slider-prev').onclick = ()=>go(cur-1);
-  document.getElementById('slider-next').onclick = ()=>go(cur+1);
-  showSlide(0);
-});
-</script>
+    document.getElementById('nav-toggler').addEventListener('click', () => {
+      document.getElementById('mobile-menu').classList.toggle('hidden');
+    });
+  </script>
+</body>
+</html>
