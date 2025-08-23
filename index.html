@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>隱形牙套介紹</title>
   <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="icon" type="image/png" href="images/cu.png">
+  <link rel="icon" type="image/png" href="images/cu.png">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
   <style>
     /* 進場淡入 */
@@ -26,7 +26,7 @@
 
     /* 分頁點點 */
     .swiper-pagination-bullet { background: rgba(255,255,255,0.6); opacity: 1; }
-    .swiper-pagination-bullet-active { background: #3b82f6; } /* Tailwind 藍色 */
+    .swiper-pagination-bullet-active { background: #3b82f6; }
 
     /* 箭頭樣式：半透明圓形 */
     .swiper-button-next, .swiper-button-prev {
@@ -46,21 +46,51 @@
         <img src="images/cu.png" class="h-10 w-auto" alt="Cee Yu Logo">
       </div>
       <nav>
+        <!-- 桌機選單 -->
         <ul class="hidden md:flex space-x-6 text-gray-700">
           <li><a href="#hero" class="hover:text-blue-500">隱形牙套</a></li>
-		  <li><a href="#process" class="hover:text-blue-500">矯正流程</a></li>
+          <li><a href="#process" class="hover:text-blue-500">矯正流程</a></li>
           <li><a href="#plan" class="hover:text-blue-500">矯正方案</a></li>
           <li><a href="#case" class="hover:text-blue-500">矯正案例</a></li>
           <li><a href="#qa" class="hover:text-blue-500">常見問題</a></li>
         </ul>
-        <button id="nav-toggler" class="md:hidden focus:outline-none" aria-label="Toggle menu">
-          <svg class="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+        <!-- 漢堡鈕 -->
+        <button id="nav-toggler" class="md:hidden focus:outline-none" aria-label="Toggle menu" aria-expanded="false">
+          <svg class="w-7 h-7 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
           </svg>
         </button>
       </nav>
     </div>
   </header>
+
+  <!-- 行動版：背景遮罩 -->
+  <div id="menu-backdrop" class="fixed inset-0 bg-black/40 z-40 hidden md:hidden"></div>
+
+  <!-- 行動版：右側抽屜選單 -->
+  <aside id="mobile-menu"
+         class="fixed top-0 right-0 h-screen w-72 bg-white z-50 shadow-xl transform translate-x-full transition-transform duration-300 md:hidden">
+    <div class="flex items-center justify-between px-5 py-3 border-b">
+      <div class="flex items-center space-x-2">
+        <img src="images/cu.png" alt="Cee Yu" class="h-8 w-auto">
+        <span class="font-semibold text-gray-700">MENU</span>
+      </div>
+      <button id="menu-close" class="p-2 rounded hover:bg-gray-100" aria-label="Close menu">
+        <svg class="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+      </button>
+    </div>
+    <nav class="px-5 py-4">
+      <ul class="space-y-2 text-gray-700">
+        <li><a href="#hero" class="block rounded px-3 py-3 hover:bg-gray-100">隱形牙套</a></li>
+        <li><a href="#aligner-flow" class="block rounded px-3 py-3 hover:bg-gray-100">矯正流程</a></li>
+        <li><a href="#plan" class="block rounded px-3 py-3 hover:bg-gray-100">矯正方案</a></li>
+        <li><a href="#case" class="block rounded px-3 py-3 hover:bg-gray-100">矯正案例</a></li>
+        <li><a href="#qa" class="block rounded px-3 py-3 hover:bg-gray-100">常見問題</a></li>
+      </ul>
+    </nav>
+  </aside>
 
   <!-- 這裡不手動寫固定 padding，改由 JS 精準計算 -->
   <main id="main">
@@ -74,9 +104,9 @@
       <div class="swiper-slide bg-cover bg-center flex items-center justify-start px-6"
            style="background-image: url('images/ceeyu/01.jpeg');">
         <div class="text-left text-white z-10 p-6 rounded-lg max-w-3xl pl-6 md:pl-20 lg:pl-32 relative -translate-y-12">
-         	<h1 class="text-2xl md:text-5xl font-extrabold leading-snug">
-			  M.I.T全新隱形矯正品牌
-			</h1>
+          <h1 class="text-2xl md:text-5xl font-extrabold leading-snug">
+            M.I.T全新隱形矯正品牌
+          </h1>
           <p class="mt-3 text-base md:text-xl text-white/90 tracking-wide font-medium">
             牙醫師、牙技師共同打造
           </p>
@@ -90,9 +120,9 @@
       <div class="swiper-slide bg-cover bg-center flex items-center justify-start px-6"
            style="background-image: url('images/ceeyu/02.jpeg');">
         <div class="text-left text-white z-10 p-6 rounded-lg max-w-3xl pl-6 md:pl-20 lg:pl-32 relative -translate-y-12">
-			<h1 class="text-2xl md:text-5xl font-extrabold leading-snug">
-			  M.I.T全新隱形矯正品牌
-			</h1>
+          <h1 class="text-2xl md:text-5xl font-extrabold leading-snug">
+            M.I.T全新隱形矯正品牌
+          </h1>
           <p class="mt-3 text-base md:text-xl text-white/90 tracking-wide font-medium">
             牙醫師、牙技師共同打造
           </p>
@@ -111,17 +141,11 @@
   </div>
 </section>
 
-
-
-
-	
-	
-	<!-- 特色圓形圖區塊 -->
+<!-- 特色圓形圖區塊 -->
 <section id="features-circles"
   class="relative bg-cover bg-center text-white"
   style="background-image:url('images/ceeyu/bg01.png');">
 
-  <!-- 背景遮罩，讓白字更清楚，可調整透明度 -->
   <div class="absolute inset-0 bg-gradient-to-b from-black/30 via-black/20 to-black/30"></div>
 
   <div class="relative max-w-6xl mx-auto px-6 py-16">
@@ -134,10 +158,9 @@
         <img src="images/ceeyu/bg01_01.png" alt="專屬雷標"
              class="mx-auto w-56 md:w-64">
         <h3 class="mt-6 text-2xl font-bold tracking-wide">專屬雷標</h3>
-		<p class="mt-2 text-sm md:text-base text-white/90 leading-relaxed bg-black/30 px-4 py-2 rounded-lg">
-		  專屬雷射標記，清楚辨識牙套副數，避免混淆更安心。
-		</p>
-
+        <p class="mt-2 text-sm md:text-base text-white/90 leading-relaxed bg-black/30 px-4 py-2 rounded-lg">
+          專屬雷射標記，清楚辨識牙套副數，避免混淆更安心。
+        </p>
       </div>
 
       <!-- 2 牙齦線切割 -->
@@ -145,12 +168,9 @@
         <img src="images/ceeyu/bg01_02.png" alt="牙齦線切割"
              class="mx-auto w-56 md:w-64">
         <h3 class="mt-6 text-2xl font-bold tracking-wide">牙齦線切割</h3>
-
-		<p class="mt-2 text-sm md:text-base text-white/90 leading-relaxed tracking-wide">
-			牙齦線切割設計，舒適貼合、不刮嘴。
-		</p>
-		
-
+        <p class="mt-2 text-sm md:text-base text-white/90 leading-relaxed tracking-wide">
+          牙齦線切割設計，舒適貼合、不刮嘴。
+        </p>
       </div>
 
       <!-- 3 衛署許可材料 -->
@@ -158,39 +178,33 @@
         <img src="images/ceeyu/bg01_03.png" alt="衛署許可材料"
              class="mx-auto w-56 md:w-64">
         <h3 class="mt-6 text-2xl font-bold tracking-wide">衛署許可材料</h3>
-			<p class="mt-2 text-xs md:text-sm uppercase tracking-wider text-blue-200 font-medium">
-			  專屬雷射標記｜避免混淆更安心
-			</p>
-
+        <p class="mt-2 text-xs md:text-sm uppercase tracking-wider text-blue-200 font-medium">
+          專屬雷射標記｜避免混淆更安心
+        </p>
       </div>
 
     </div>
   </div>
 </section>
 
-
-
 <!-- 矯正流程 -->
 <section id="aligner-flow"
   class="relative bg-cover bg-center text-white"
   style="background-image:url('images/ceeyu/bg02.png');">
 
-  <!-- 背景遮罩 -->
   <div class="absolute inset-0 bg-black/30"></div>
 
-  <div class="relative max-w-6xl mx-auto px-6 py-16"> <!-- py-20 → py-16 減少高度 -->
+  <div class="relative max-w-6xl mx-auto px-6 py-16">
 
-    <!-- 標題圖片 -->
-    <div class="text-center mb-6"> <!-- 原本 mb-10 → 改成 mb-6 縮小標題和圖片間距 -->
+    <div class="text-center mb-6">
       <img src="images/ceeyu/bg02_05.png" alt="隱形牙套矯正流程"
            class="mx-auto w-72 md:w-96">
     </div>
 
-    <!-- 四張圖片 -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 text-center"> <!-- gap-4 → gap-3 讓圖片更靠近 -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 text-center">
       <div>
         <img src="images/ceeyu/bg02_01.png" alt="線上評估"
-             class="mx-auto w-44 md:w-56"> <!-- 再放大一點 -->
+             class="mx-auto w-44 md:w-56">
       </div>
       <div>
         <img src="images/ceeyu/bg02_02.png" alt="診所諮詢"
@@ -208,83 +222,69 @@
   </div>
 </section>
 
-
-	
-	
-	
-	
-	
-
-    
-
-    <!-- 材質優勢（卡片翻面） -->
+<!-- 矯正方案（莫迪藍漸層） -->
 <section id="plan" class="py-16 px-6" style="background: linear-gradient(to bottom, #4A6D7C, #5F8A94, #A7C2CC);">
-
-
-      <div class="max-w-6xl mx-auto text-center mb-12">
-		    <h2 class="text-4xl font-bold text-center text-white mb-10">矯正方案</h2>
-      </div>
-      <div class="flex justify-center">
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          <!-- flip-card 1 -->
-          <div class="flip-card h-64 w-64">
-            <div class="flip-card-inner h-full">
-              <div class="flip-card-front flex flex-col items-center justify-center h-full w-full p-0">
-                <img src="images/11.png" alt="自動適應性" class="absolute inset-0 h-full w-full object-cover rounded-xl" />
-                <div class="relative z-10 flex flex-col items-center justify-center h-full w-full bg-black/20">
-                  <h3 class="text-xl font-semibold text-white drop-shadow">自動適應性</h3>
-                </div>
-              </div>
-              <div class="flip-card-back bg-gradient-to-br from-blue-400 to-yellow-300 flex flex-col items-center justify-center h-full w-full p-6 text-white rounded-xl">
-                <h3 class="text-lg font-bold mb-2">自動適應性</h3>
-                <p class="text-sm text-center">材質會根據口腔形狀微調，提供舒適而精準的貼合度。</p>
-              </div>
+  <div class="max-w-6xl mx-auto text-center mb-12">
+    <h2 class="text-4xl font-bold text-center text-white mb-10">矯正方案</h2>
+  </div>
+  <div class="flex justify-center">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- flip-card 1 -->
+      <div class="flip-card h-64 w-64">
+        <div class="flip-card-inner h-full">
+          <div class="flip-card-front flex flex-col items-center justify-center h-full w-full p-0">
+            <img src="images/11.png" alt="自動適應性" class="absolute inset-0 h-full w-full object-cover rounded-xl" />
+            <div class="relative z-10 flex flex-col items-center justify-center h-full w-full bg-black/20">
+              <h3 class="text-xl font-semibold text-white drop-shadow">自動適應性</h3>
             </div>
           </div>
-          <!-- flip-card 2 -->
-          <div class="flip-card h-64 w-64">
-            <div class="flip-card-inner h-full">
-              <div class="flip-card-front flex flex-col items-center justify-center h-full w-full p-0">
-                <img src="images/N-320.jpg" alt="穩定支撐" class="absolute inset-0 h-full w-full object-cover rounded-xl" />
-                <div class="relative z-10 flex flex-col items-center justify-center h-full w-full bg-black/20">
-                  <h3 class="text-xl font-semibold text-white drop-shadow">穩定支撐</h3>
-                </div>
-              </div>
-              <div class="flip-card-back bg-gradient-to-br from-green-400 to-yellow-300 flex flex-col items-center justify-center h-full w-full p-6 text-white rounded-xl">
-                <h3 class="text-lg font-bold mb-2">穩定支撐</h3>
-                <p class="text-sm text-center">高分子結構，耐拉扯、耐用不變形，安全感升級。</p>
-              </div>
-            </div>
-          </div>
-          <!-- flip-card 3 -->
-          <div class="flip-card h-64 w-64">
-            <div class="flip-card-inner h-full">
-              <div class="flip-card-front flex flex-col items-center justify-center h-full w-full p-0">
-                <img src="images/N-530.jpg" alt="抗污抗染" class="absolute inset-0 h-full w-full object-cover rounded-xl" />
-                <div class="relative z-10 flex flex-col items-center justify-center h-full w-full bg-black/20">
-                  <h3 class="text-xl font-semibold text-white drop-shadow">抗污抗染</h3>
-                </div>
-              </div>
-              <div class="flip-card-back bg-gradient-to-br from-pink-400 to-yellow-300 flex flex-col items-center justify-center h-full w-full p-6 text-white rounded-xl">
-                <h3 class="text-lg font-bold mb-2">抗污抗染</h3>
-                <p class="text-sm text-center">特殊材料不易染色，維持長時間透亮美觀。</p>
-              </div>
-            </div>
+          <div class="flip-card-back bg-gradient-to-br from-blue-400 to-yellow-300 flex flex-col items-center justify-center h-full w-full p-6 text-white rounded-xl">
+            <h3 class="text-lg font-bold mb-2">自動適應性</h3>
+            <p class="text-sm text-center">材質會根據口腔形狀微調，提供舒適而精準的貼合度。</p>
           </div>
         </div>
       </div>
-    </section>
+      <!-- flip-card 2 -->
+      <div class="flip-card h-64 w-64">
+        <div class="flip-card-inner h-full">
+          <div class="flip-card-front flex flex-col items-center justify-center h-full w-full p-0">
+            <img src="images/N-320.jpg" alt="穩定支撐" class="absolute inset-0 h-full w-full object-cover rounded-xl" />
+            <div class="relative z-10 flex flex-col items-center justify-center h-full w-full bg-black/20">
+              <h3 class="text-xl font-semibold text-white drop-shadow">穩定支撐</h3>
+            </div>
+          </div>
+          <div class="flip-card-back bg-gradient-to-br from-green-400 to-yellow-300 flex flex-col items-center justify-center h-full w-full p-6 text-white rounded-xl">
+            <h3 class="text-lg font-bold mb-2">穩定支撐</h3>
+            <p class="text-sm text-center">高分子結構，耐拉扯、耐用不變形，安全感升級。</p>
+          </div>
+        </div>
+      </div>
+      <!-- flip-card 3 -->
+      <div class="flip-card h-64 w-64">
+        <div class="flip-card-inner h-full">
+          <div class="flip-card-front flex flex-col items-center justify-center h-full w-full p-0">
+            <img src="images/N-530.jpg" alt="抗污抗染" class="absolute inset-0 h-full w-full object-cover rounded-xl" />
+            <div class="relative z-10 flex flex-col items-center justify-center h-full w-full bg-black/20">
+              <h3 class="text-xl font-semibold text-white drop-shadow">抗污抗染</h3>
+            </div>
+          </div>
+          <div class="flip-card-back bg-gradient-to-br from-pink-400 to-yellow-300 flex flex-col items-center justify-center h-full w-full p-6 text-white rounded-xl">
+            <h3 class="text-lg font-bold mb-2">抗污抗染</h3>
+            <p class="text-sm text-center">特殊材料不易染色，維持長時間透亮美觀。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-  <!-- 真實見證 -->
+<!-- 真實見證 -->
 <section id="case" class="relative py-16 bg-cover bg-center" style="background-image:url('images/ceeyu/bg01.png');">
-  <!-- 半透明遮罩 -->
   <div class="absolute inset-0 bg-black/20"></div>
 
   <div class="relative max-w-6xl mx-auto">
     <h2 class="text-4xl font-bold text-center text-white mb-10">矯正案例</h2>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
-      
-      <!-- 卡片 1：白底帶陰影 -->
       <div class="flex flex-col items-center">
         <img src="images/N-236.jpg" class="w-72 h-72 object-cover rounded-2xl shadow-lg mb-6" alt="見證1">
         <div class="bg-white rounded-2xl p-6 text-gray-800 w-full text-center font-medium shadow-lg shadow-blue-100">
@@ -294,8 +294,7 @@
           </div>
         </div>
       </div>
-      
-      <!-- 卡片 2：淡黃 -->
+
       <div class="flex flex-col items-center">
         <img src="images/N-36.jpg" class="w-72 h-72 object-cover rounded-2xl shadow-lg mb-6" alt="見證2">
         <div class="bg-yellow-50 rounded-2xl p-6 text-gray-800 w-full text-center font-medium shadow-md shadow-yellow-100">
@@ -305,8 +304,7 @@
           </div>
         </div>
       </div>
-      
-      <!-- 卡片 3：粉藍 -->
+
       <div class="flex flex-col items-center">
         <img src="images/apun.jpg" class="w-72 h-72 object-cover rounded-2xl shadow-lg mb-6" alt="見證3">
         <div class="bg-blue-50 rounded-2xl p-6 text-gray-800 w-full text-center font-medium shadow-md shadow-blue-100">
@@ -321,34 +319,33 @@
   </div>
 </section>
 
-
-    <!-- QA -->
-    <section id="qa" class="py-16 px-6 bg-white fade-in">
-      <h2 class="text-3xl font-extrabold text-center mb-8">還有什麼想知道嗎？讓我們來回答</h2>
-      <div class="max-w-3xl mx-auto space-y-4">
-        <div class="border rounded-lg overflow-hidden faq-item">
-          <button class="faq-question w-full px-4 py-3 flex justify-between items-center text-left">
-            <span>隱形牙套療程需要多久？</span>
-            <span class="faq-icon text-2xl">+</span>
-          </button>
-          <div class="faq-answer px-4 py-3 hidden text-gray-600">視個人情況，一般為 6~24 個月。</div>
-        </div>
-        <div class="border rounded-lg overflow-hidden faq-item">
-          <button class="faq-question w-full px-4 py-3 flex justify-between items-center text-left">
-            <span>配戴時會疼痛或影響說話嗎？</span>
-            <span class="faq-icon text-2xl">+</span>
-          </button>
-          <div class="faq-answer px-4 py-3 hidden text-gray-600">初期會有輕微不適，但多數人可快速適應，日常溝通幾乎無影響。</div>
-        </div>
-        <div class="border rounded-lg overflow-hidden faq-item">
-          <button class="faq-question w-full px-4 py-3 flex justify-between items-center text-left">
-            <span>矯正完成後會復發嗎？</span>
-            <span class="faq-icon text-2xl">+</span>
-          </button>
-          <div class="faq-answer px-4 py-3 hidden text-gray-600">只要遵照醫師指示配戴保持器，基本上可維持理想狀態。</div>
-        </div>
-      </div>
-    </section>
+<!-- QA -->
+<section id="qa" class="py-16 px-6 bg-white fade-in">
+  <h2 class="text-3xl font-extrabold text-center mb-8">還有什麼想知道嗎？讓我們來回答</h2>
+  <div class="max-w-3xl mx-auto space-y-4">
+    <div class="border rounded-lg overflow-hidden faq-item">
+      <button class="faq-question w-full px-4 py-3 flex justify-between items-center text-left">
+        <span>隱形牙套療程需要多久？</span>
+        <span class="faq-icon text-2xl">+</span>
+      </button>
+      <div class="faq-answer px-4 py-3 hidden text-gray-600">視個人情況，一般為 6~24 個月。</div>
+    </div>
+    <div class="border rounded-lg overflow-hidden faq-item">
+      <button class="faq-question w-full px-4 py-3 flex justify-between items-center text-left">
+        <span>配戴時會疼痛或影響說話嗎？</span>
+        <span class="faq-icon text-2xl">+</span>
+      </button>
+      <div class="faq-answer px-4 py-3 hidden text-gray-600">初期會有輕微不適，但多數人可快速適應，日常溝通幾乎無影響。</div>
+    </div>
+    <div class="border rounded-lg overflow-hidden faq-item">
+      <button class="faq-question w-full px-4 py-3 flex justify-between items-center text-left">
+        <span>矯正完成後會復發嗎？</span>
+        <span class="faq-icon text-2xl">+</span>
+      </button>
+      <div class="faq-answer px-4 py-3 hidden text-gray-600">只要遵照醫師指示配戴保持器，基本上可維持理想狀態。</div>
+    </div>
+  </div>
+</section>
 
   </main>
 
@@ -379,7 +376,7 @@
       const header = document.querySelector('header');
       const main = document.getElementById('main');
       if (!header || !main) return;
-      const h = Math.ceil(header.offsetHeight); // 取整避免 DPR 小數誤差
+      const h = Math.ceil(header.offsetHeight);
       main.style.paddingTop = h + 'px';
     }
     window.addEventListener('load', applyHeaderSpacer);
@@ -401,12 +398,43 @@
       });
     });
 
-    // 手機選單（若不存在則不綁定）
+    // 手機選單（抽屜）
     const toggler = document.getElementById('nav-toggler');
-    const mobileMenu = document.getElementById('mobile-menu');
-    if (toggler && mobileMenu) {
+    const drawer  = document.getElementById('mobile-menu');
+    const closeBtn = document.getElementById('menu-close');
+    const backdrop = document.getElementById('menu-backdrop');
+
+    function openMenu() {
+      drawer.classList.remove('translate-x-full');
+      backdrop.classList.remove('hidden');
+      document.body.classList.add('overflow-hidden');
+      toggler.setAttribute('aria-expanded', 'true');
+    }
+    function closeMenu() {
+      drawer.classList.add('translate-x-full');
+      backdrop.classList.add('hidden');
+      document.body.classList.remove('overflow-hidden');
+      toggler.setAttribute('aria-expanded', 'false');
+    }
+
+    if (toggler && drawer && backdrop) {
       toggler.addEventListener('click', () => {
-        mobileMenu.classList.toggle('hidden');
+        if (drawer.classList.contains('translate-x-full')) openMenu();
+        else closeMenu();
+      });
+      backdrop.addEventListener('click', closeMenu);
+      if (closeBtn) closeBtn.addEventListener('click', closeMenu);
+
+      // Esc 關閉
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && !drawer.classList.contains('translate-x-full')) {
+          closeMenu();
+        }
+      });
+
+      // 點擊選單連結後關閉
+      drawer.querySelectorAll('a').forEach(a => {
+        a.addEventListener('click', closeMenu);
       });
     }
 
