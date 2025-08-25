@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>隱形牙套介紹</title>
+  <title>cee yu 隱形牙套</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="icon" type="image/png" href="images/cu.png">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
@@ -19,22 +19,65 @@
     .flip-card-front, .flip-card-back { position: absolute; width: 100%; height: 100%; top: 0; left: 0; backface-visibility: hidden; border-radius: 0.75rem; }
     .flip-card-back { transform: rotateY(180deg); }
 
-    /* 確保 Swiper 每張 slide 吃到父層高度 */
+    /* 確保 Swiper 每張 slide 吃到父層高度（HERO專用） */
     #hero .swiper, 
     #hero .swiper-wrapper, 
     #hero .swiper-slide { height: 100%; }
 
-    /* 分頁點點 */
+    /* 分頁點點樣式（共用） */
     .swiper-pagination-bullet { background: rgba(255,255,255,0.6); opacity: 1; }
     .swiper-pagination-bullet-active { background: #3b82f6; }
 
-    /* 箭頭樣式：半透明圓形 */
+    /* 箭頭樣式（共用）：半透明圓形 */
     .swiper-button-next, .swiper-button-prev {
       background: rgba(0,0,0,0.4);
       border-radius: 9999px;
       width: 45px; height: 45px; color: white;
     }
     .swiper-button-next::after, .swiper-button-prev::after { font-size: 20px; font-weight: bold; }
+
+    .btn-consult {
+      display: inline-block;
+      margin-top: 1.5rem;
+      padding: 0.75rem 1.5rem;
+      background-color: #06c755;
+      color: #fff;
+      font-size: 1.125rem;
+      font-weight: 600;
+      border-radius: 9999px;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+    }
+    .btn-consult:hover { background-color: #05a94f; }
+
+    /* 浮動動畫（hover 才啟動） */
+    @keyframes floatY { 0%{transform:translateY(0)} 50%{transform:translateY(-10px)} 100%{transform:translateY(0)} }
+    .card { transition: transform .25s ease; filter: drop-shadow(0 8px 20px rgba(0,0,0,.25)); }
+    .step:hover .card { animation: floatY 2.5s ease-in-out infinite; }
+    .img-box{display:block}
+
+    /* 方案卡片 */
+    .plans-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:2rem; justify-items:center; }
+    @media (max-width:1023px){ .plans-grid{ grid-template-columns:repeat(2,1fr) } }
+    @media (max-width:639px){ .plans-grid{ grid-template-columns:1fr } }
+    .plan-card{ width:100%; max-width:260px; border-radius:12px; background:rgba(255,255,255,.15);
+      backdrop-filter:blur(6px); -webkit-backdrop-filter:blur(6px); box-shadow:0 8px 20px rgba(0,0,0,.25);
+      overflow:hidden; transition:transform .25s ease, box-shadow .25s ease; }
+    .plan-card:hover{ transform:translateY(-5px); box-shadow:0 14px 28px rgba(0,0,0,.35) }
+    .plan-badge{ background:#4b5563; padding:.8rem; text-align:center; font-weight:bold }
+    .plan-body{ padding:1rem; text-align:center; color:#f9fafb }
+    .plan-body p{ margin:.4rem 0 }
+    .plan-sep{ border:none; border-top:1px dashed rgba(255,255,255,.6); margin:.5rem auto; width:70% }
+    .plan-duration{ font-weight:bold }
+    .plan-price{ font-size:1.1rem; font-weight:800 }
+
+    /* 案例卡（已改成單張大圖的外框） */
+    .case-card{ width:100%; max-width:480px; border-radius:20px; overflow:hidden; background:rgba(8,41,45,.75);
+      box-shadow:0 14px 34px rgba(0,0,0,.35); transition:transform .25s ease, box-shadow .25s ease, background .25s ease; }
+    .case-card:hover{ transform:translateY(-6px); box-shadow:0 18px 40px rgba(0,0,0,.45); background:rgba(8,41,45,.85) }
+    .img-wrap{ position:relative; width:100%; aspect-ratio:16/9 }
+    .img-wrap img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block }
+    @media (min-width:1024px){ .case-card{ max-width:520px } }
   </style>
 </head>
 <body class="font-sans text-gray-800 overflow-x-hidden m-0">
@@ -92,260 +135,181 @@
     </nav>
   </aside>
 
-  <!-- 這裡不手動寫固定 padding，改由 JS 精準計算 -->
   <main id="main">
 
-<!-- Hero -->
-<section id="hero" class="relative h-[700px] md:h-[900px] overflow-hidden">
-  <div class="swiper mySwiper h-full">
-    <div class="swiper-wrapper">
+    <!-- HERO（輪播 #1） -->
+    <section id="hero" class="relative h-[700px] md:h-[900px] overflow-hidden">
+      <div class="swiper heroSwiper h-full">
+        <div class="swiper-wrapper">
 
-      <!-- 第一張 -->
-      <div class="swiper-slide bg-cover bg-center flex items-center justify-start px-6"
-           style="background-image: url('images/ceeyu/01.jpeg');">
-        <div class="text-left text-white z-10 p-6 rounded-lg max-w-3xl pl-6 md:pl-20 lg:pl-32 relative -translate-y-12">
-          <h1 class="text-2xl md:text-5xl font-extrabold leading-snug">
-            M.I.T全新隱形矯正品牌
-          </h1>
-          <p class="mt-3 text-base md:text-xl text-white/90 tracking-wide font-medium">
-            牙醫師、牙技師共同打造
-          </p>
-          <button class="mt-6 px-6 py-3 rounded-full bg-blue-500 hover:bg-blue-600 transition font-bold text-lg">
-            立即諮詢
+          <!-- Slide 1 -->
+          <div class="swiper-slide bg-cover bg-center flex items-center justify-start px-6" style="background-image:url('images/ceeyu/01/01.jpeg');">
+            <div class="z-10 relative -translate-y-12 pl-6 md:pl-20 lg:pl-32 max-w-3xl text-white">
+              <h1 class="text-2xl md:text-5xl font-extrabold leading-snug">M.I.T全新隱形矯正品牌</h1>
+              <p class="mt-3 text-base md:text-xl text-white/90 tracking-wide font-medium">牙醫師、牙技師共同打造</p>
+              <a href="https://line.me/R/ti/p/@432xwugt" 
+				   target="_blank" 
+				   rel="noopener" 
+				   class="btn-consult">
+				  加入官方LINE，立即評估
+				</a>
+            </div>
+          </div>
+
+          <!-- Slide 2 -->
+          <div class="swiper-slide bg-cover bg-center flex items-center justify-start px-6" style="background-image:url('images/ceeyu/01/02.jpeg');">
+            <div class="z-10 relative -translate-y-12 pl-6 md:pl-20 lg:pl-32 max-w-3xl text-white">
+              <h1 class="text-2xl md:text-5xl font-extrabold leading-snug">M.I.T全新隱形矯正品牌</h1>
+              <p class="mt-3 text-base md:text-xl text-white/90 tracking-wide font-medium">牙醫師、牙技師共同打造</p>
+              <a href="#contact" class="btn-consult">加入官方LINE，立即評估</a>
+            </div>
+          </div>
+
+          <!-- Slide 3 -->
+          <div class="swiper-slide bg-cover bg-center flex items-center justify-start px-6" style="background-image:url('images/ceeyu/01/05.jpeg');">
+            <div class="z-10 relative -translate-y-12 pl-6 md:pl-20 lg:pl-32 max-w-3xl text-white">
+              <h1 class="text-2xl md:text-5xl font-extrabold leading-snug">M.I.T全新隱形矯正品牌</h1>
+              <p class="mt-3 text-base md:text-xl text-white/90 tracking-wide font-medium">牙醫師、牙技師共同打造</p>
+              <a href="#contact" class="btn-consult">加入官方LINE，立即評估</a>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- HERO 的分頁點 / 箭頭：使用獨立 class，避免互搶 -->
+        <div class="hero-pagination swiper-pagination"></div>
+        <div class="hero-next swiper-button-next"></div>
+        <div class="hero-prev swiper-button-prev"></div>
+      </div>
+    </section>
+
+    <!-- 特色圓形圖區塊 -->
+    <section id="features-circles" class="relative bg-cover bg-center text-white" style="background-image:url('images/ceeyu/02/bg01.png');">
+      <div class="absolute inset-0 bg-gradient-to-b from-black/30 via-black/20 to-black/30"></div>
+
+      <div class="relative max-w-6xl mx-auto px-6 py-8">
+        <div class="text-center mb-2">
+          <img src="images/ceeyu/02/bg01_04.png" alt="CEEYU牙套優勢" class="mx-auto w-auto max-h-28 md:max-h-40">
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+          <div class="text-center">
+            <img src="images/ceeyu/02/bg01_01.png" alt="專屬雷標" class="mx-auto w-56 md:w-64">
+            <h3 class="mt-6 text-2xl font-bold tracking-wide">專屬雷標</h3>
+            <p class="mt-2 text-sm md:text-base text-white/90 leading-relaxed bg-black/30 px-4 py-2 rounded-lg">專屬雷射標記，清楚辨識牙套副數，避免混淆更安心。</p>
+          </div>
+
+          <div class="text-center">
+            <img src="images/ceeyu/02/bg01_02.png" alt="牙齦線切割" class="mx-auto w-56 md:w-64">
+            <h3 class="mt-6 text-2xl font-bold tracking-wide">牙齦線切割</h3>
+            <p class="mt-2 text-sm md:text-base text-white/90 leading-relaxed bg-black/30 px-4 py-2 rounded-lg">牙齦線切割設計，舒適貼合、不刮嘴。</p>
+
+          </div>
+
+          <div class="text-center">
+            <img src="images/ceeyu/02/bg01_03.png" alt="衛署許可材料" class="mx-auto w-56 md:w-64">
+            <h3 class="mt-6 text-2xl font-bold tracking-wide">衛署許可材料</h3>
+            <p class="mt-2 text-sm md:text-base text-white/90 leading-relaxed bg-black/30 px-4 py-2 rounded-lg">專屬雷射標記｜避免混淆更安心</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 矯正流程 -->
+    <section class="relative bg-cover bg-center text-white pt-6 md:pt-8 pb-10" style="background-image:url('images/ceeyu/03/bg02.png');">
+      <div class="absolute inset-0 bg-black/30"></div>
+
+      <div class="relative max-w-6xl mx-auto px-6">
+        <div class="text-center mb-2">
+          <img src="images/ceeyu/03/bg02_05.png" alt="隱形牙套矯正流程" class="mx-auto w-72 md:w-96">
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 text-center">
+          <div class="step"><div class="card inline-block"><div class="img-box w-56 md:w-72 h-60 md:h-72 mx-auto"><img src="images/ceeyu/03/bg02_01.png" alt="線上評估" class="w-full h-full object-contain"></div></div></div>
+          <div class="step"><div class="card inline-block"><div class="img-box w-56 md:w-72 h-60 md:h-72 mx-auto"><img src="images/ceeyu/03/bg02_02.png" alt="診所諮詢" class="w-full h-full object-contain"></div></div></div>
+          <div class="step"><div class="card inline-block"><div class="img-box w-56 md:w-72 h-60 md:h-72 mx-auto"><img src="images/ceeyu/03/bg02_03.png" alt="數位軟體分析" class="w-full h-full object-contain"></div></div></div>
+          <div class="step"><div class="card inline-block"><div class="img-box w-56 md:w-72 h-60 md:h-72 mx-auto"><img src="images/ceeyu/03/bg02_04.png" alt="開始佩戴牙套" class="w-full h-full object-contain"></div></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 滿版輪播（輪播 #2） -->
+    <section id="carousel" class="relative w-full h-[80vh]">
+      <div class="swiper gallerySwiper w-full h-full">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <img src="images/ceeyu/run/01.png" alt="輪播圖片 1" class="w-full h-full object-cover">
+          </div>
+          <div class="swiper-slide">
+            <img src="images/ceeyu/run/02.png" alt="輪播圖片 2" class="w-full h-full object-cover">
+          </div>
+        </div>
+
+        <!-- 使用獨立控制器，避免與 HERO 衝突 -->
+        <div class="gallery-pagination swiper-pagination"></div>
+        <div class="gallery-next swiper-button-next"></div>
+        <div class="gallery-prev swiper-button-prev"></div>
+      </div>
+    </section>
+
+    <!-- 矯正方案 -->
+    <section id="plans" class="relative bg-cover bg-center text-white py-10 md:py-14" style="background-image:url('images/ceeyu/04/bg01.png');">
+      <div class="absolute inset-0 bg-gradient-to-b from-black/30 via-black/25 to-black/35"></div>
+
+      <div class="relative max-w-6xl mx-auto px-6">
+        <h2 class="text-center text-3xl md:text-4xl font-extrabold tracking-wide mb-10">矯正方案</h2>
+
+        <div class="plans-grid">
+          <article class="plan-card"><div class="plan-badge">CEEYU Lite</div><div class="plan-body"><p>二次矯正、牙縫或少數牙齒輕微歪斜</p><hr class="plan-sep"><p class="plan-duration">3–5 個月</p><hr class="plan-sep"><p class="plan-price">$39,000 起</p></div></article>
+          <article class="plan-card"><div class="plan-badge">CEEYU Flex</div><div class="plan-body"><p>輕度牙齒擁擠、輕微暴牙或小範圍矯正</p><hr class="plan-sep"><p class="plan-duration">6–10 個月</p><hr class="plan-sep"><p class="plan-price">$72,000 起</p></div></article>
+          <article class="plan-card"><div class="plan-badge">CEEYU Core</div><div class="plan-body"><p>中度不整齊、明顯暴牙或影響笑容美觀</p><hr class="plan-sep"><p class="plan-duration">8–15 個月</p><hr class="plan-sep"><p class="plan-price">$120,000 起</p></div></article>
+          <article class="plan-card"><div class="plan-badge">CEEYU Max</div><div class="plan-body"><p>重度齒列問題、複雜咬合或需全口矯正</p><hr class="plan-sep"><p class="plan-duration">12–18 個月</p><hr class="plan-sep"><p class="plan-price">$150,000 起</p></div></article>
+        </div>
+
+        <div class="mt-8 text-center text-white/90 text-xs md:text-sm leading-relaxed">
+          <p>以上方案費用僅為參考範圍，實際費用將依個人狀況與診療目標而有所差異。詳細內容請以現場諮詢說明為準。</p>
+          <p class="mt-1">每位患者的療程內容及進度皆不同，實際需由專業醫師評估後提供完整治療規劃。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 矯正案例（單張大圖 + 卡片化效果） -->
+    <section id="cases" class="relative bg-cover bg-center text-white py-10 md:py-14" style="background-image:url('images/ceeyu/05/01.png');">
+      <div class="absolute inset-0 bg-gradient-to-b from-black/25 via-black/20 to-black/30"></div>
+
+      <div class="relative max-w-6xl mx-auto px-6">
+        <h2 class="text-center text-3xl md:text-4xl font-extrabold tracking-wide mb-8">矯正案例</h2>
+
+        <div class="case-image bg-white/10 backdrop-blur-md p-4 rounded-2xl shadow-2xl">
+          <img src="images/ceeyu/05/02.png" alt="矯正案例" class="mx-auto w-full max-w-5xl rounded-xl">
+        </div>
+      </div>
+    </section>
+
+    <!-- QA -->
+    <section id="qa" class="py-16 px-6 bg-white fade-in">
+      <h2 class="text-3xl font-extrabold text-center mb-8">還有什麼想知道嗎？讓我們來回答</h2>
+      <div class="max-w-3xl mx-auto space-y-4">
+        <div class="border rounded-lg overflow-hidden faq-item">
+          <button class="faq-question w-full px-4 py-3 flex justify-between items-center text-left">
+            <span>隱形牙套療程需要多久？</span><span class="faq-icon text-2xl">+</span>
           </button>
+          <div class="faq-answer px-4 py-3 hidden text-gray-600">視個人情況，一般為 6~24 個月。</div>
         </div>
-      </div>
-
-      <!-- 第二張 -->
-      <div class="swiper-slide bg-cover bg-center flex items-center justify-start px-6"
-           style="background-image: url('images/ceeyu/02.jpeg');">
-        <div class="text-left text-white z-10 p-6 rounded-lg max-w-3xl pl-6 md:pl-20 lg:pl-32 relative -translate-y-12">
-          <h1 class="text-2xl md:text-5xl font-extrabold leading-snug">
-            M.I.T全新隱形矯正品牌
-          </h1>
-          <p class="mt-3 text-base md:text-xl text-white/90 tracking-wide font-medium">
-            牙醫師、牙技師共同打造
-          </p>
-          <button class="mt-6 px-6 py-3 rounded-full bg-blue-500 hover:bg-blue-600 transition font-bold text-lg">
-            立即諮詢
+        <div class="border rounded-lg overflow-hidden faq-item">
+          <button class="faq-question w-full px-4 py-3 flex justify-between items-center text左">
+            <span>配戴時會疼痛或影響說話嗎？</span><span class="faq-icon text-2xl">+</span>
           </button>
+          <div class="faq-answer px-4 py-3 hidden text-gray-600">初期會有輕微不適，但多數人可快速適應，日常溝通幾乎無影響。</div>
+        </div>
+        <div class="border rounded-lg overflow-hidden faq-item">
+          <button class="faq-question w-full px-4 py-3 flex justify-between items-center text-left">
+            <span>矯正完成後會復發嗎？</span><span class="faq-icon text-2xl">+</span>
+          </button>
+          <div class="faq-answer px-4 py-3 hidden text-gray-600">只要遵照醫師指示配戴保持器，基本上可維持理想狀態。</div>
         </div>
       </div>
-
-    </div>
-
-    <!-- 分頁點點 / 箭頭 -->
-    <div class="swiper-pagination"></div>
-    <div class="swiper-button-next"></div>
-    <div class="swiper-button-prev"></div>
-  </div>
-</section>
-
-<!-- 特色圓形圖區塊 -->
-<section id="features-circles"
-  class="relative bg-cover bg-center text-white"
-  style="background-image:url('images/ceeyu/bg01.png');">
-
-  <div class="absolute inset-0 bg-gradient-to-b from-black/30 via-black/20 to-black/30"></div>
-
-  <div class="relative max-w-6xl mx-auto px-6 py-16">
-    <h2 class="text-3xl md:text-4xl font-extrabold text-center mb-10">材質與設計特色</h2>
-
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
-
-      <!-- 1 專屬雷標 -->
-      <div class="text-center">
-        <img src="images/ceeyu/bg01_01.png" alt="專屬雷標"
-             class="mx-auto w-56 md:w-64">
-        <h3 class="mt-6 text-2xl font-bold tracking-wide">專屬雷標</h3>
-        <p class="mt-2 text-sm md:text-base text-white/90 leading-relaxed bg-black/30 px-4 py-2 rounded-lg">
-          專屬雷射標記，清楚辨識牙套副數，避免混淆更安心。
-        </p>
-      </div>
-
-      <!-- 2 牙齦線切割 -->
-      <div class="text-center">
-        <img src="images/ceeyu/bg01_02.png" alt="牙齦線切割"
-             class="mx-auto w-56 md:w-64">
-        <h3 class="mt-6 text-2xl font-bold tracking-wide">牙齦線切割</h3>
-        <p class="mt-2 text-sm md:text-base text-white/90 leading-relaxed tracking-wide">
-          牙齦線切割設計，舒適貼合、不刮嘴。
-        </p>
-      </div>
-
-      <!-- 3 衛署許可材料 -->
-      <div class="text-center">
-        <img src="images/ceeyu/bg01_03.png" alt="衛署許可材料"
-             class="mx-auto w-56 md:w-64">
-        <h3 class="mt-6 text-2xl font-bold tracking-wide">衛署許可材料</h3>
-        <p class="mt-2 text-xs md:text-sm uppercase tracking-wider text-blue-200 font-medium">
-          專屬雷射標記｜避免混淆更安心
-        </p>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- 矯正流程 -->
-<section id="aligner-flow"
-  class="relative bg-cover bg-center text-white"
-  style="background-image:url('images/ceeyu/bg02.png');">
-
-  <div class="absolute inset-0 bg-black/30"></div>
-
-  <div class="relative max-w-6xl mx-auto px-6 py-16">
-
-    <div class="text-center mb-6">
-      <img src="images/ceeyu/bg02_05.png" alt="隱形牙套矯正流程"
-           class="mx-auto w-72 md:w-96">
-    </div>
-
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 text-center">
-      <div>
-        <img src="images/ceeyu/bg02_01.png" alt="線上評估"
-             class="mx-auto w-44 md:w-56">
-      </div>
-      <div>
-        <img src="images/ceeyu/bg02_02.png" alt="診所諮詢"
-             class="mx-auto w-44 md:w-56">
-      </div>
-      <div>
-        <img src="images/ceeyu/bg02_03.png" alt="數位軟體分析"
-             class="mx-auto w-44 md:w-56">
-      </div>
-      <div>
-        <img src="images/ceeyu/bg02_04.png" alt="開始佩戴牙套"
-             class="mx-auto w-44 md:w-56">
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- 矯正方案（莫迪藍漸層） -->
-<section id="plan" class="py-16 px-6" style="background: linear-gradient(to bottom, #4A6D7C, #5F8A94, #A7C2CC);">
-  <div class="max-w-6xl mx-auto text-center mb-12">
-    <h2 class="text-4xl font-bold text-center text-white mb-10">矯正方案</h2>
-  </div>
-  <div class="flex justify-center">
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-      <!-- flip-card 1 -->
-      <div class="flip-card h-64 w-64">
-        <div class="flip-card-inner h-full">
-          <div class="flip-card-front flex flex-col items-center justify-center h-full w-full p-0">
-            <img src="images/11.png" alt="自動適應性" class="absolute inset-0 h-full w-full object-cover rounded-xl" />
-            <div class="relative z-10 flex flex-col items-center justify-center h-full w-full bg-black/20">
-              <h3 class="text-xl font-semibold text-white drop-shadow">自動適應性</h3>
-            </div>
-          </div>
-          <div class="flip-card-back bg-gradient-to-br from-blue-400 to-yellow-300 flex flex-col items-center justify-center h-full w-full p-6 text-white rounded-xl">
-            <h3 class="text-lg font-bold mb-2">自動適應性</h3>
-            <p class="text-sm text-center">材質會根據口腔形狀微調，提供舒適而精準的貼合度。</p>
-          </div>
-        </div>
-      </div>
-      <!-- flip-card 2 -->
-      <div class="flip-card h-64 w-64">
-        <div class="flip-card-inner h-full">
-          <div class="flip-card-front flex flex-col items-center justify-center h-full w-full p-0">
-            <img src="images/N-320.jpg" alt="穩定支撐" class="absolute inset-0 h-full w-full object-cover rounded-xl" />
-            <div class="relative z-10 flex flex-col items-center justify-center h-full w-full bg-black/20">
-              <h3 class="text-xl font-semibold text-white drop-shadow">穩定支撐</h3>
-            </div>
-          </div>
-          <div class="flip-card-back bg-gradient-to-br from-green-400 to-yellow-300 flex flex-col items-center justify-center h-full w-full p-6 text-white rounded-xl">
-            <h3 class="text-lg font-bold mb-2">穩定支撐</h3>
-            <p class="text-sm text-center">高分子結構，耐拉扯、耐用不變形，安全感升級。</p>
-          </div>
-        </div>
-      </div>
-      <!-- flip-card 3 -->
-      <div class="flip-card h-64 w-64">
-        <div class="flip-card-inner h-full">
-          <div class="flip-card-front flex flex-col items-center justify-center h-full w-full p-0">
-            <img src="images/N-530.jpg" alt="抗污抗染" class="absolute inset-0 h-full w-full object-cover rounded-xl" />
-            <div class="relative z-10 flex flex-col items-center justify-center h-full w-full bg-black/20">
-              <h3 class="text-xl font-semibold text-white drop-shadow">抗污抗染</h3>
-            </div>
-          </div>
-          <div class="flip-card-back bg-gradient-to-br from-pink-400 to-yellow-300 flex flex-col items-center justify-center h-full w-full p-6 text-white rounded-xl">
-            <h3 class="text-lg font-bold mb-2">抗污抗染</h3>
-            <p class="text-sm text-center">特殊材料不易染色，維持長時間透亮美觀。</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- 真實見證 -->
-<section id="case" class="relative py-16 bg-cover bg-center" style="background-image:url('images/ceeyu/bg01.png');">
-  <div class="absolute inset-0 bg-black/20"></div>
-
-  <div class="relative max-w-6xl mx-auto">
-    <h2 class="text-4xl font-bold text-center text-white mb-10">矯正案例</h2>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
-      <div class="flex flex-col items-center">
-        <img src="images/N-236.jpg" class="w-72 h-72 object-cover rounded-2xl shadow-lg mb-6" alt="見證1">
-        <div class="bg-white rounded-2xl p-6 text-gray-800 w-full text-center font-medium shadow-lg shadow-blue-100">
-          <div class="font-bold text-xl mb-2">Sean</div>
-          <div class="text-base leading-relaxed">
-            一直興起想整牙的念頭，但礙於工作需要大量報告，怕戴鋼牙吃東西不舒服、價格又比較貴，遲遲不敢起心動念，後來接觸到 Cee Yu，牙套是透明的完全符合我的需求。
-          </div>
-        </div>
-      </div>
-
-      <div class="flex flex-col items-center">
-        <img src="images/N-36.jpg" class="w-72 h-72 object-cover rounded-2xl shadow-lg mb-6" alt="見證2">
-        <div class="bg-yellow-50 rounded-2xl p-6 text-gray-800 w-full text-center font-medium shadow-md shadow-yellow-100">
-          <div class="font-bold text-xl mb-2">芷妍</div>
-          <div class="text-base leading-relaxed">
-            戴 Cee Yu 的隱形牙套到現在第二個月，完全沒有後悔。雖然每換一副新牙套時會有些微不舒服，也還在嘗試和疼軟感受共處中，但還是很期待接下來牙齒的變化！
-          </div>
-        </div>
-      </div>
-
-      <div class="flex flex-col items-center">
-        <img src="images/apun.jpg" class="w-72 h-72 object-cover rounded-2xl shadow-lg mb-6" alt="見證3">
-        <div class="bg-blue-50 rounded-2xl p-6 text-gray-800 w-full text-center font-medium shadow-md shadow-blue-100">
-          <div class="font-bold text-xl mb-2">柯胖</div>
-          <div class="text-base leading-relaxed">
-            Cee Yu 一開始先線上評估，只要 5 分鐘就可以完成，在專業醫生評估適切性後約診，可以完全省去跑診所後發現不合適的時間成本。
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- QA -->
-<section id="qa" class="py-16 px-6 bg-white fade-in">
-  <h2 class="text-3xl font-extrabold text-center mb-8">還有什麼想知道嗎？讓我們來回答</h2>
-  <div class="max-w-3xl mx-auto space-y-4">
-    <div class="border rounded-lg overflow-hidden faq-item">
-      <button class="faq-question w-full px-4 py-3 flex justify-between items-center text-left">
-        <span>隱形牙套療程需要多久？</span>
-        <span class="faq-icon text-2xl">+</span>
-      </button>
-      <div class="faq-answer px-4 py-3 hidden text-gray-600">視個人情況，一般為 6~24 個月。</div>
-    </div>
-    <div class="border rounded-lg overflow-hidden faq-item">
-      <button class="faq-question w-full px-4 py-3 flex justify-between items-center text-left">
-        <span>配戴時會疼痛或影響說話嗎？</span>
-        <span class="faq-icon text-2xl">+</span>
-      </button>
-      <div class="faq-answer px-4 py-3 hidden text-gray-600">初期會有輕微不適，但多數人可快速適應，日常溝通幾乎無影響。</div>
-    </div>
-    <div class="border rounded-lg overflow-hidden faq-item">
-      <button class="faq-question w-full px-4 py-3 flex justify-between items-center text-left">
-        <span>矯正完成後會復發嗎？</span>
-        <span class="faq-icon text-2xl">+</span>
-      </button>
-      <div class="faq-answer px-4 py-3 hidden text-gray-600">只要遵照醫師指示配戴保持器，基本上可維持理想狀態。</div>
-    </div>
-  </div>
-</section>
+    </section>
 
   </main>
 
@@ -359,7 +323,7 @@
       <div class="flex flex-col gap-2 text-sm text-center md:text-right">
         <div><span class="font-semibold">電話：</span><a href="tel:02-1234-5678" class="hover:underline">02-1234-5678</a></div>
         <div><span class="font-semibold">Email：</span><a href="mailto:info@ceeyu.com" class="hover:underline">info@ceeyu.com</a></div>
-        <div><span class="font-semibold">地址：</span>台北市信義區市民大道五段100號10F</div>
+        <div><span class="font-semibold">地址：</span>台北市信義區</div>
       </div>
     </div>
     <div class="mt-6 text-center text-xs text-gray-400 border-t border-gray-700 pt-4">
@@ -369,9 +333,8 @@
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-
   <script>
-    // 讓 main 的 paddingTop 精準等於 header 高度（避免任何 1px 縫隙）
+    // 讓 main 的 paddingTop 精準等於 header 高度
     function applyHeaderSpacer() {
       const header = document.querySelector('header');
       const main = document.getElementById('main');
@@ -424,29 +387,86 @@
       });
       backdrop.addEventListener('click', closeMenu);
       if (closeBtn) closeBtn.addEventListener('click', closeMenu);
-
-      // Esc 關閉
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && !drawer.classList.contains('translate-x-full')) {
-          closeMenu();
-        }
-      });
-
-      // 點擊選單連結後關閉
-      drawer.querySelectorAll('a').forEach(a => {
-        a.addEventListener('click', closeMenu);
-      });
+      document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !drawer.classList.contains('translate-x-full')) closeMenu(); });
+      drawer.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
     }
 
-    // Swiper
-    const swiper = new Swiper(".mySwiper", {
+    /* ===== Swiper 初始化：兩個實例，使用不同的 class 與控制器 ===== */
+    // HERO 輪播
+    const heroSwiper = new Swiper(".heroSwiper", {
       loop: true,
       autoplay: { delay: 5000, disableOnInteraction: false },
-      pagination: { el: ".swiper-pagination", clickable: true },
-      navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" },
       effect: "fade",
-      speed: 1000
+      speed: 1000,
+      pagination: { el: ".hero-pagination", clickable: true },
+      navigation: { nextEl: ".hero-next", prevEl: ".hero-prev" },
+    });
+
+    // 滿版輪播
+    const gallerySwiper = new Swiper(".gallerySwiper", {
+      loop: true,
+      autoplay: { delay: 3000, disableOnInteraction: false },
+      pagination: { el: ".gallery-pagination", clickable: true },
+      navigation: { nextEl: ".gallery-next", prevEl: ".gallery-prev" },
     });
   </script>
+  
+  
+  
+  
+  
+  
+  
+  <!-- Floating Social Buttons -->
+<div class="fixed bottom-5 right-5 z-[60] flex flex-col gap-3">
+  <!-- Facebook -->
+  <a href="https://www.facebook.com/share/18tZ8oHrma/?mibextid=wwXIfr"
+     target="_blank" rel="noopener" aria-label="前往 Facebook"
+     class="w-12 h-12 rounded-full bg-white/90 backdrop-blur ring-1 ring-black/10 shadow-lg flex items-center justify-center
+            hover:scale-105 hover:bg-white transition">
+    <!-- FB Icon -->
+    <svg viewBox="0 0 24 24" aria-hidden="true" class="w-6 h-6 text-[#1877F2]">
+      <path fill="currentColor" d="M22 12.06C22 6.49 17.52 2 12 2S2 6.49 2 12.06c0 5.01 3.66 9.17 8.44 9.94v-7.03H7.9v-2.91h2.54V9.41c0-2.5 1.49-3.89 3.77-3.89 1.09 0 2.23.2 2.23.2v2.45h-1.26c-1.24 0-1.63.77-1.63 1.56v1.87h2.78l-.44 2.91h-2.34V22c4.78-.77 8.44-4.93 8.44-9.94Z"/>
+    </svg>
+  </a>
+
+  <!-- Instagram -->
+  <a href="https://www.threads.com/@cee__yu?igshid=NTc4MTIwNjQ2YQ=="
+     target="_blank" rel="noopener" aria-label="前往 Instagram"
+     class="w-12 h-12 rounded-full bg-white/90 backdrop-blur ring-1 ring-black/10 shadow-lg flex items-center justify-center
+            hover:scale-105 hover:bg-white transition">
+    <!-- IG Icon -->
+    <svg viewBox="0 0 24 24" aria-hidden="true" class="w-6 h-6">
+      <defs>
+        <linearGradient id="ig" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#F58529"/><stop offset="50%" stop-color="#DD2A7B"/><stop offset="100%" stop-color="#8134AF"/>
+        </linearGradient>
+      </defs>
+      <path fill="url(#ig)" d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7Zm5 3.5A5.5 5.5 0 1 1 6.5 13 5.5 5.5 0 0 1 12 7.5Zm0 2A3.5 3.5 0 1 0 15.5 13 3.5 3.5 0 0 0 12 9.5ZM18 6.25a1.25 1.25 0 1 1-1.25 1.25A1.25 1.25 0 0 1 18 6.25Z"/>
+    </svg>
+  </a>
+
+  <!-- LINE -->
+  <a href="https://line.me/R/ti/p/@432xwugt" 
+     target="_blank" rel="noopener" aria-label="加入 LINE"
+     class="w-12 h-12 rounded-full bg-white/90 backdrop-blur ring-1 ring-black/10 shadow-lg flex items-center justify-center
+            hover:scale-105 hover:bg-white transition">
+    <!-- LINE Icon -->
+    <svg viewBox="0 0 24 24" aria-hidden="true" class="w-6 h-6 text-[#06C755]">
+      <path fill="currentColor" d="M19.5 3H4.5A3.5 3.5 0 0 0 1 6.5v7A3.5 3.5 0 0 0 4.5 17H6v3.25a.75.75 0 0 0 1.23.58L11 17h8.5A3.5 3.5 0 0 0 23 13.5v-7A3.5 3.5 0 0 0 19.5 3ZM8 12H6V8h2v4Zm4 0h-2V8h2v4Zm4 0h-2V8h2v4Zm2-4h-2V8h2v0Z"/>
+    </svg>
+  </a>
+</div>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 </body>
 </html>
